@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import Allvolunteerposts from "../pages/Allvolunteerposts";
+import PostDetails from "../pages/PostDetails";
 
 const Mainroutes = createBrowserRouter([
     {
@@ -30,6 +31,12 @@ const Mainroutes = createBrowserRouter([
       path:'/needposts',
       element:<Allvolunteerposts/>,
       loader:()=> fetch('http://localhost:8000/posts')
+    },
+    {
+      path:'/postdetails/:id',
+      element:<PostDetails/>,
+      loader:({params})=>fetch(`http://localhost:8000/posts/${params.id}`)
+      
     }
     ]
     },
