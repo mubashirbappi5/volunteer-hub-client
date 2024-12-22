@@ -6,7 +6,7 @@ import registerlottie from '../assets/Animation - 1734850071311.json'
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 
 const RegisterPage = () => {
-	const {usersregister} = useContext(Authcontext)
+	const {usersregister,Userupdateinfo} = useContext(Authcontext)
 	const handleregister = (e)=>{
 		e.preventDefault()
 		const form = e.target
@@ -15,10 +15,21 @@ const RegisterPage = () => {
 		const photourl = form.photoURL.value
 		const password = form.password.value
 
-		console.log(name,email,photourl,password)
+	
 		usersregister(email,password)
 		.then(res=>{
 			console.log(res.user)
+			const profile = {
+				displayName:name,
+				photoURL:photourl,
+			}
+			Userupdateinfo(profile)
+			.then(res=>{
+				console.log('updated')
+			})
+			.catch(error=>{
+				console.log(error)
+			})
 		})
 		.catch(error=>{
 			console.log(error)
@@ -43,22 +54,22 @@ const RegisterPage = () => {
 		<div className="space-y-4">
 			<div>
 				<label  className="block mb-2 text-sm">Name</label>
-				<input type="text" name="name" id="name" placeholder="Enter Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+				<input type="text" name="name"  placeholder="Enter Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 			</div>
 			<div>
 				<label  className="block mb-2 text-sm">Email address</label>
-				<input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+				<input type="email" name="email"  placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 			</div>
 			<div>
 				<label  className="block mb-2 text-sm">PhotoURL</label>
-				<input type="url" name="photoURL" id="photourl" placeholder="Enter photo url" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+				<input type="url" name="photoURL"  placeholder="Enter photo url" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 			</div>
 			<div>
 				<div className="flex justify-between mb-2">
 					<label  className="text-sm">Password</label>
 					
 				</div>
-				<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+				<input type="password" name="password"  placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 			</div>
 		</div>
 		<div className="space-y-2">

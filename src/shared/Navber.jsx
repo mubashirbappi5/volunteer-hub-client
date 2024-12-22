@@ -85,7 +85,7 @@ const Navber = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                    className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                   >
                     <li>
                       <>Item 1</>
@@ -102,7 +102,7 @@ const Navber = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                  className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                 >
                   <li>
                     <a>Item 1</a>
