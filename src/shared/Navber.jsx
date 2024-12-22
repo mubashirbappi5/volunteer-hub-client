@@ -1,10 +1,11 @@
 import { Dropdown, Button } from 'flowbite-react';
+import { Link, NavLink } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 
 
 const Navber = () => {
     const links = <>
-     <li><a>Home</a></li>
+    <NavLink to={'/'}><li><a>Home</a></li></NavLink>
      <li><a>All volunteer Need posts</a></li>
      <li><a>Home</a></li>
     
@@ -54,7 +55,7 @@ const Navber = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <button className="btn text-black font-bold bg-orange-300">Login</button>
+  <Link to={'/login'}><button className="btn text-black font-bold bg-orange-300">Login</button></Link>
     <div>
     <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className="btn  m-1">My Profile</div>

@@ -4,6 +4,8 @@ import {
   } from "react-router-dom";
 import Root from "../layouts/Root";
 import Home from "../pages/Home";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 
 const Mainroutes = createBrowserRouter([
     {
@@ -12,7 +14,18 @@ const Mainroutes = createBrowserRouter([
       children:[{
         path:"/",
         element:<Home/>
-      }]
+      },
+      {
+        path:'/login',
+        element:<LoginPage/>
+      }
+    ,
+      {
+        path:'/register',
+        element:<RegisterPage/>
+      }
+    
+    ]
     },
   ]);
   export default Mainroutes
