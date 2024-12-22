@@ -1,9 +1,10 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React, { createContext } from 'react';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebace/Firebace.init';
 
 export const Authcontext  = createContext()
 const AuthProvider = ({children}) => {
+    const [user,setuser] =useState(null)
     const provider = new GoogleAuthProvider();
     const googleusers = ()=>{
         return signInWithPopup(auth, provider)
@@ -14,6 +15,21 @@ const AuthProvider = ({children}) => {
     const usersLogin = ( email, password) =>{
         return signInWithEmailAndPassword(auth, email, password)
     }
+
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
+           
+          console.log(currentUser)
+          setuser(currentUser)
+        })
+        return ()=>{
+            unsubscribe()
+        }
+
+    },[])
+    const userlogout =()=>{
+        return signOut(auth)
+    }
    
 
    const name = 'bappi'
@@ -21,9 +37,11 @@ const AuthProvider = ({children}) => {
 
     const authData={
         name,
+        user,
         googleusers,
         usersregister,
         usersLogin,
+        userlogout,
 
     }
     return (
