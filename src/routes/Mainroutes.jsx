@@ -28,7 +28,8 @@ const Mainroutes = createBrowserRouter([
     ,
     {
       path:'/needposts',
-      element:<Allvolunteerposts/>
+      element:<Allvolunteerposts/>,
+      loader:()=> fetch('http://localhost:8000/posts')
     }
     ]
     },

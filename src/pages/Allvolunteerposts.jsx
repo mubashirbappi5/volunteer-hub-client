@@ -1,6 +1,10 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import PostCard from '../Components/all posts/PostCard';
 
 const Allvolunteerposts = () => {
+    const posts = useLoaderData()
+    console.log(posts)
     return (
         <div className='w-11/12 mx-auto'>
            <div className=' flex flex-col md:flex-row items-center  border border-orange-500   rounded-2xl md:rounded-full  p-6'>
@@ -40,6 +44,12 @@ const Allvolunteerposts = () => {
 		<input type="search" name="Search" placeholder="Search..." className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50 focus:dark:border-violet-600" />
 	</div>
 </fieldset>
+
+           </div>
+           <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4'>
+            {
+                posts.map(post=><PostCard key={post._id} post={post}></PostCard>)
+            }
 
            </div>
           
