@@ -3,17 +3,18 @@ import { Link, NavLink } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 
 
+
 const Navber = () => {
     const links = <>
-    <NavLink to={'/'}><li><a>Home</a></li></NavLink>
-     <li><a>All volunteer Need posts</a></li>
-     <li><a>Home</a></li>
+    <NavLink to={'/'}><li>Home</li></NavLink>
+     <li>All volunteer Need posts</li>
+    
     
     
     </>
     return (
         <div>
-           <div className="navbar bg-base-100">
+         <div className={`navbar  bg-gradient-to-r from-white via-orange-300 to-white bg-cover bg-center`}>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,8 +61,8 @@ const Navber = () => {
     <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className="btn  m-1">My Profile</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+    <li><>Item 1</></li>
+    <li><>Item 2</></li>
   </ul>
 </div>
     </div>

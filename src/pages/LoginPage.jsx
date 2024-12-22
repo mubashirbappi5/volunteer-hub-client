@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 
 const LoginPage = () => {
+	const handlelogin = (e)=>{
+		e.preventDefault()
+		const form = e.target
+		const email = form.email.value
+		const password = form.password.value
+		console.log(email,password)
+		
+
+	}
     return (
         <div>
          <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-800">
@@ -18,7 +27,7 @@ const LoginPage = () => {
 		<h1 className="my-3 text-xl font-bold">Login</h1>
 	
 	</div>
-	<form noValidate="" action="" className="space-y-12">
+	<form onSubmit={handlelogin} className="space-y-12">
 		<div className="space-y-4">
 			<div>
 				<label htmlFor="email" className="block mb-2 text-sm">Email address</label>
@@ -27,14 +36,14 @@ const LoginPage = () => {
 			<div>
 				<div className="flex justify-between mb-2">
 					<label htmlFor="password" className="text-sm">Password</label>
-					<a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-600">Forgot password?</a>
+					
 				</div>
 				<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 			</div>
 		</div>
 		<div className="space-y-2">
 			<div>
-				<button type="button" className=" btn w-full px-8 py-3 font-semibold text-white rounded-md dark:bg-violet-600 dark:text-gray-50 bg-orange-400">Log in</button>
+				<input type="submit" value={'Log in'} className=" btn w-full px-8 py-3 font-semibold text-white rounded-md dark:bg-violet-600 dark:text-gray-50 bg-orange-400"/>
 			</div>
             <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
 				<Link to={'/register'} className="hover:underline dark:text-violet-600 text-orange-400">Register</Link>.
