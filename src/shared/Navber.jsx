@@ -16,9 +16,15 @@ const Navber = () => {
   const links = (
     <>
       <NavLink to={"/"}>
-        <li>Home</li>
+        <li><button>Home</button></li>
       </NavLink>
-      <li>All volunteer Need posts</li>
+     
+      <NavLink to={"/needposts"}>
+        <li><button>All volunteer Need posts</button></li>
+      </NavLink>
+      <NavLink to={"/"}>
+        <li><button>Home</button></li>
+      </NavLink>
     </>
   );
   return (
@@ -80,7 +86,7 @@ const Navber = () => {
             
               <div>
                 <div className="dropdown dropdown-end">
-                  <div tabIndex={0} role="button" className="btn  m-1">
+                  <div tabIndex={0} role="button" className="btn btn-outline border-2 border-orange-300 text-orange-400 m-1">
                     My Profile
                   </div>
                   <ul
@@ -88,10 +94,11 @@ const Navber = () => {
                     className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                   >
                     <li>
-                      <>Item 1</>
+                      <Link>Add Volunteer need Post
+                      </Link>
                     </li>
                     <li>
-                      <>Item 2</>
+                      <Link>Manage My Posts </Link>
                     </li>
                   </ul>
                 </div>
@@ -105,10 +112,10 @@ const Navber = () => {
                   className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                 >
                   <li>
-                    <a>Item 1</a>
+                   <h1 className="font-semibold text-xl text-orange-400">{user?.displayName}</h1>
                   </li>
                   <li>
-                  <button onClick={handlelogout} className="btn">
+                  <button onClick={handlelogout} className="btn btn-sm">
                 logout
               </button>
                   </li>
