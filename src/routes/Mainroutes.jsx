@@ -6,6 +6,7 @@ import Root from "../layouts/Root";
 import Home from "../pages/Home";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import Allvolunteerposts from "../pages/Allvolunteerposts";
 
 const Mainroutes = createBrowserRouter([
     {
@@ -24,7 +25,11 @@ const Mainroutes = createBrowserRouter([
         path:'/register',
         element:<RegisterPage/>
       }
-    
+    ,
+    {
+      path:'/needposts',
+      element:<Allvolunteerposts/>
+    }
     ]
     },
   ]);
