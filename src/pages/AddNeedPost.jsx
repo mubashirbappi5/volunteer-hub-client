@@ -18,6 +18,20 @@ const AddNeedPost = () => {
         newdata.deadline =startDate
         newdata.volunteers_needed = volunteers_needed
         console.log(newdata)
+
+        fetch('http://localhost:8000/posts',{
+            method:'POST',
+            headers:{
+             "content-type":"application/json"
+            },
+            body:JSON.stringify(newdata)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+         if(data.insertedId){
+           alert('add done!')
+         }
+        })
     }
     return (
         <div>
