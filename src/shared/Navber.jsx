@@ -16,14 +16,20 @@ const Navber = () => {
   const links = (
     <>
       <NavLink to={"/"}>
-        <li><button>Home</button></li>
+        <li>
+          <button>Home</button>
+        </li>
       </NavLink>
-     
+
       <NavLink to={"/needposts"}>
-        <li><button>All volunteer Need posts</button></li>
+        <li>
+          <button>All volunteer Need posts</button>
+        </li>
       </NavLink>
       <NavLink to={"/"}>
-        <li><button>Home</button></li>
+        <li>
+          <button>Home</button>
+        </li>
       </NavLink>
     </>
   );
@@ -83,10 +89,13 @@ const Navber = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex">
-            
               <div>
                 <div className="dropdown dropdown-end">
-                  <div tabIndex={0} role="button" className="btn btn-outline border-2 border-orange-300 text-orange-400 m-1">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-outline border-2 border-orange-300 text-orange-400 m-1"
+                  >
                     My Profile
                   </div>
                   <ul
@@ -94,8 +103,7 @@ const Navber = () => {
                     className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                   >
                     <li>
-                      <Link>Add Volunteer need Post
-                      </Link>
+                      <Link to={'/addpost'}>Add Volunteer need Post</Link>
                     </li>
                     <li>
                       <Link>Manage My Posts </Link>
@@ -105,23 +113,29 @@ const Navber = () => {
               </div>
               <div className="dropdown dropdown-hover dropdown-bottom dropdown-end px-4">
                 <div tabIndex={0} role="button" className="btn btn-circle m-1">
-                <img alt="" className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100" src="https://source.unsplash.com/40x40/?portrait?2" />
+                  <img
+                    src={user?.photoURL}
+                    alt=""
+                    className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100"
+                   
+                  />
                 </div>
                 <ul
                   tabIndex={0}
                   className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                 >
                   <li>
-                   <h1 className="font-semibold text-xl text-orange-400">{user?.displayName}</h1>
+                    <h1 className="font-semibold text-xl text-orange-400">
+                      {user?.displayName}
+                    </h1>
                   </li>
                   <li>
-                  <button onClick={handlelogout} className="btn btn-sm">
-                logout
-              </button>
+                    <button onClick={handlelogout} className="btn btn-sm">
+                      logout
+                    </button>
                   </li>
                 </ul>
               </div>
-              
             </div>
           ) : (
             <div>
