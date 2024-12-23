@@ -9,6 +9,7 @@ import RegisterPage from "../pages/RegisterPage";
 import Allvolunteerposts from "../pages/Allvolunteerposts";
 import PostDetails from "../pages/PostDetails";
 import AddNeedPost from "../pages/AddNeedPost";
+import MypostSManage from "../pages/MypostSManage";
 
 const Mainroutes = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const Mainroutes = createBrowserRouter([
     {
       path:'/addpost',
       element:<AddNeedPost/>
+    },
+    {
+      path:'/mypostmanage',
+      element:<MypostSManage/>
     }
     ]
     },

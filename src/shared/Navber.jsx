@@ -106,7 +106,7 @@ const Navber = () => {
                       <Link to={'/addpost'}>Add Volunteer need Post</Link>
                     </li>
                     <li>
-                      <Link>Manage My Posts </Link>
+                      <Link to={'/mypostmanage'}>Manage My Posts </Link>
                     </li>
                   </ul>
                 </div>
