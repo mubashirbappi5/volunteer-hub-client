@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import DatePicker from 'react-datepicker';
@@ -7,13 +7,41 @@ const BeAvolunteer = () => {
     const postsData = useLoaderData()
     const {user} = useContext(Authcontext)
     const {title,volunteers_needed,deadline,description,category,location,thumbnail,_id,organizer_name,organizer_email} = postsData
+  const [startDate, setStartDate] = useState(new Date());
+
+    const handleBevolunteer = (e)=>{
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const formObject = Object.fromEntries(formData.entries());
+        console.log(formObject)
+        const {volunteersNeeded, ...newdata}= formObject
+       const volunteers_needed = parseInt(volunteersNeeded)
+        newdata.deadline =startDate
+        newdata.volunteers_needed = volunteers_needed
+        console.log(newdata)
+
+        fetch('http://localhost:8000/volunteer',{
+            method:'POST',
+            headers:{
+             "content-type":"application/json"
+            },
+            body:JSON.stringify(newdata)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+         if(data.insertedId){
+           alert('add done!')
+         }
+        })
+
+    }
     return (
-        <div>
+        <div className='lg:h-[1000px]'>
             <div>
             <div
   className="py-28 relative"
   style={{
-    backgroundImage: "url(https://i.ibb.co.com/y5MnJwH/environment-volunteer-concept-with-group-persons-1.jpg)",
+    backgroundImage: `url(${thumbnail})`,
            backgroundSize: "cover",
           backgroundPosition: "center 20%",
          
@@ -31,10 +59,10 @@ const BeAvolunteer = () => {
   </div>
             </div>
             </div>
-            <div>
-                <div className=" p-10 border rounded-md shadow-xl mx-auto w-10/12 my-10 ">
-                              <form >
-                                <div className="grid gap-4 lg:grid-cols-3 sm:grid-cols-2 sm:gap-6">
+            <div className=' lg:px-20 px-5'>
+                <div className=" lg:absolute top-80 bg-white p-10 border rounded-md shadow-xl mx-auto  my-10 ">
+                              <form onSubmit={handleBevolunteer}>
+                                <div className="grid gap-4 lg:grid-cols-3 :grid-cols-1 sm:gap-6">
                                   <div className="sm:col-span-3">
                                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                                       Post Title
@@ -136,13 +164,13 @@ const BeAvolunteer = () => {
                                      
                                     </select>
                                   </div>
-                                  <div className="sm:col-span-1">
+                                  <div className="">
                                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                                       {" "}
                                       Deadline
                                     </label>
                                     <DatePicker
-                                      className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                      className=" w-80 md:w-40 lg:w-80 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                       selected={deadline}
                                       onChange={(date) => setStartDate(date)}
                                       readOnly
@@ -196,7 +224,7 @@ const BeAvolunteer = () => {
                                     <input
                                       type="text"
                                       name="suggestion"
-                                      defaultValue={location}
+                                     
                                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                       placeholder="Write your Suggestion"
                                       required=""
@@ -220,7 +248,7 @@ const BeAvolunteer = () => {
                                   <input
                                     className="btn btn-wide"
                                     type="submit"
-                                    value="Update Post"
+                                    value="Request"
                                   />
                                 </div>
                               </form>
