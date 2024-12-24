@@ -1,48 +1,66 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Authcontext } from '../Context/AuthContext/AuthProvider';
-import { Link } from 'react-router-dom';
-
+import React, { useContext, useEffect, useState } from "react";
+import { Authcontext } from "../Context/AuthContext/AuthProvider";
+import { Link } from "react-router-dom";
+import nodata from'../assets/Animation - 1735041941677.json'
+import Lottie from "lottie-react";
 
 const MypostSManage = () => {
-    const {user} = useContext(Authcontext)
-    const[myposts,setmypost] = useState([])
-       useEffect(()=>{
-        fetch(`http://localhost:8000/posts?email=${user?.email}`)
-       .then(res=>res.json())
-       .then(data=>{
-        console.log(data)
-        setmypost(data)
-       })
+  const { user } = useContext(Authcontext);
+  const [myposts, setmypost] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:8000/posts?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setmypost(data);
+      });
+  }, [user]);
 
-       },[user])
+  return (
+    <div>
+      <div
+        className="hero  "
+        style={{
+          backgroundImage:
+            "url(https://i.ibb.co.com/ZXBs9z3/environment-volunteer-concept-with-persons-holding-boxes-donations.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center 35%",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">
+              Manage Your Volunteer Posts
+            </h1>
+            <p className="mb-5">
+              Keep track of your posts, make updates, and remove outdated ones
+              with ease.
+            </p>
+          </div>
+        </div>
+      </div>
+
       
-    return (
-        <div>
-           
-            <div
-  className="hero  "
-  style={{
-    backgroundImage: "url(https://i.ibb.co.com/ZXBs9z3/environment-volunteer-concept-with-persons-holding-boxes-donations.jpg)",
-    backgroundSize: 'cover',  
-    backgroundPosition: 'center 35%'
-    
-  }}>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-neutral-content text-center">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Manage Your Volunteer Posts</h1>
-      <p className="mb-5">
-      Keep track of your posts, make updates, and remove outdated ones with ease.
-      </p>
-      
-    </div>
-  </div>
-</div>
-<div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-	<div className='flex justify-between my-6'>
+            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
+	<div className='flex justify-between mt-6'>
     <h2 className="mb-4 text-2xl font-semibold leading-tight">My Posts</h2>
     <h1 className=''>shape</h1>
     </div>
+    {
+        myposts.length===0?(
+            <>
+           
+        <div className="w-8/12 mx-auto flex bg-base-100 flex-col">
+       
+            <Lottie animationData={nodata} ></Lottie>
+            <Link to={'/addpost'} className="btn btn-outline">Add Post</Link>
+          
+
+        </div>
+        </>
+    ):(
+    <div>
 	<div className="overflow-x-auto">
 		<table className="min-w-full mx-auto text-xs">
 			<colgroup>
@@ -63,6 +81,7 @@ const MypostSManage = () => {
 					
 				</tr>
 			</thead>
+           
           {
             myposts.map((mypost,index)=><tbody key={index}>
 				<tr className="border border-opacity-20 dark:border-gray-300  hover:bg-orange-100 dark:bg-gray-50">
@@ -97,13 +116,23 @@ const MypostSManage = () => {
 				
 			</tbody>)
           }
+         
 			
 		</table>
-	</div>
+       
+	
 </div>
-            
+</div>
+
+        )}
+
+
+
+
         </div>
-    );
+     
+    </div>
+  );
 };
 
 export default MypostSManage;
