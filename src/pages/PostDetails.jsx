@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const PostDetails = () => {
   const post = useLoaderData();
   const {
+    _id,
     thumbnail,
     title,
     deadline,
@@ -44,7 +45,7 @@ const PostDetails = () => {
           <h2>{organizer_name}</h2>
           <h3>{organizer_email}</h3>
 
-        <Link><button className="btn">Be a Volunteer</button></Link>
+        <Link to={`/bevolunteer/${_id}`}><button className="btn">Be a Volunteer</button></Link>
         </div>
       </div>
     </div>

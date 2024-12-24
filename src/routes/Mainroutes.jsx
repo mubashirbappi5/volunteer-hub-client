@@ -10,6 +10,7 @@ import Allvolunteerposts from "../pages/Allvolunteerposts";
 import PostDetails from "../pages/PostDetails";
 import AddNeedPost from "../pages/AddNeedPost";
 import MypostSManage from "../pages/MypostSManage";
+import BeAvolunteer from "../pages/BeAvolunteer";
 
 const Mainroutes = createBrowserRouter([
     {
@@ -47,6 +48,11 @@ const Mainroutes = createBrowserRouter([
     {
       path:'/mypostmanage',
       element:<MypostSManage/>
+    },
+    {
+      path:'/bevolunteer/:id',
+      element:<BeAvolunteer/>,
+      loader:({params})=>fetch(`http://localhost:8000/posts/${params.id}`)
     }
     ]
     },
