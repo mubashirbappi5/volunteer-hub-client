@@ -46,7 +46,7 @@ const AddNeedPost = () => {
               </div>
               <div className="w-full">
                   <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thumbnail </label>
-                  <input type="url" name="thumbnail "  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Thumbnail url" required=""/>
+                  <input type="text" name="thumbnail "  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Thumbnail url" required=""/>
               </div>
               <div className="w-full">
                   <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
@@ -72,10 +72,10 @@ const AddNeedPost = () => {
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                   <select name='category' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                       <option selected="">Select category</option>
-                      <option value="healthcare">Healthcare</option>
-                      <option value="education">Education</option>
-                      <option value="GA">Social Service</option>
-                      <option value="PH">Animal Welfare</option>
+                      <option value="Healthcare">Healthcare</option>
+                      <option value="Education">Education</option>
+                      <option value="Service">Social Service</option>
+                      <option value="Animal welfare">Animal Welfare</option>
                   </select>
               </div>
               <div>
