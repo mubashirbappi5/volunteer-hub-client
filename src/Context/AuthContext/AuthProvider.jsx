@@ -5,6 +5,7 @@ import auth from '../../firebace/Firebace.init';
 export const Authcontext  = createContext()
 const AuthProvider = ({children}) => {
     const [user,setuser] =useState(null)
+    const [isOpen, setIsOpen] = useState(false);
     const provider = new GoogleAuthProvider();
     const googleusers = ()=>{
         return signInWithPopup(auth, provider)
@@ -35,6 +36,12 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
    
+    // this is for modal
+
+    const handleModalToggle = () => {
+        setIsOpen(!isOpen);
+      };
+    
 
    const name = 'bappi'
    
@@ -47,6 +54,9 @@ const AuthProvider = ({children}) => {
         usersLogin,
         userlogout,
         Userupdateinfo,
+        handleModalToggle,
+        setIsOpen,
+        isOpen,
 
     }
     return (
