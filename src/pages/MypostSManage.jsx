@@ -25,11 +25,20 @@ const MypostSManage = () => {
     setActiveTab(tab);
   };
 
-
- const handleDelete = (id)=>{
-    console.log(id)
-
- }
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:8000/posts/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+   
+   
+    .then(res=>res.json())
+    .then(data=>{
+        const remaingsmypost =myposts.filter(mypost => mypost._id !== id)
+        setmypost(remaingsmypost)
+        console.log('delete done')})
+  }
 
   return (
     <div>
@@ -210,7 +219,12 @@ const MypostSManage = () => {
                               <Link className="btn btn-sm">Update</Link>
                             </td>
                             <td className="p-3 ">
-                              <button onClick={()=>handleDelete(mypost._id)} className="btn btn-sm">Delete</button>
+                              <button
+                                onClick={() => handleDelete(mypost._id)}
+                                className="btn btn-sm"
+                              >
+                                Delete
+                              </button>
                             </td>
                           </tr>
                         </tbody>
