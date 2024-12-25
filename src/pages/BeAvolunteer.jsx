@@ -3,6 +3,7 @@ import {  useLoaderData, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import DatePicker from 'react-datepicker';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const BeAvolunteer = () => {
     const postsData = useLoaderData()
@@ -45,6 +46,9 @@ const BeAvolunteer = () => {
     }
     return (
         <div className='lg:h-[1000px]'>
+          <Helmet>
+      <title>Be A Volunteer | Volunteer Hub</title>
+      </Helmet>
             <div>
             <div
   className="py-28 relative"

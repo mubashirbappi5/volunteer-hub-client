@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const LoginPage = () => {
-	const {usersLogin} = useContext(Authcontext)
+	const {usersLogin,pagetitle,setpageTitle} = useContext(Authcontext)
 	const handlelogin = (e)=>{
 		e.preventDefault();
 		const form = e.target
@@ -27,6 +28,7 @@ const LoginPage = () => {
 	}
     return (
         <div>
+			
          <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-800">
 	<div className="flex flex-col justify-between">
 		<div className="space-y-2">
@@ -59,7 +61,8 @@ const LoginPage = () => {
 				<input type="submit" value={'Log in'} className=" btn w-full px-8 py-3 font-semibold text-white rounded-md dark:bg-violet-600 dark:text-gray-50 bg-orange-400"/>
 			</div>
             <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
-				<Link to={'/register'} className="hover:underline dark:text-violet-600 text-orange-400">Register</Link>.
+				<Link to={'/register'} 
+				 className="hover:underline dark:text-violet-600 text-orange-400">Register</Link>.
 			</p>
             <div className="divider  p-4">OR</div>
             <div className='flex my-5 justify-center'>

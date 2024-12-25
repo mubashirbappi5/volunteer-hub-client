@@ -1,12 +1,14 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebace/Firebace.init';
+import { Helmet } from 'react-helmet';
 
 export const Authcontext  = createContext()
 const AuthProvider = ({children}) => {
     const [user,setuser] =useState(null)
     const [isOpen, setIsOpen] = useState(false);
-    const  [loading,setloading] = useState(true)
+    const  [loading,setloading] = useState(true);
+    const [pagetitle, setpageTitle] = useState('');
     const provider = new GoogleAuthProvider();
     const googleusers = ()=>{
         setloading(true)
@@ -47,7 +49,10 @@ const AuthProvider = ({children}) => {
     const handleModalToggle = () => {
         setIsOpen(!isOpen);
       };
-    
+    // this is for title
+    <Helmet>
+    <title>{pagetitle} | My Website</title>
+  </Helmet>
 
    const name = 'bappi'
    
@@ -65,6 +70,8 @@ const AuthProvider = ({children}) => {
         isOpen,
         loading,
         setloading,
+        setpageTitle,
+        pagetitle,
 
     }
     return (

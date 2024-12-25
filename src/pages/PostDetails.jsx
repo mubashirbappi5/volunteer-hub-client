@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const PostDetails = () => {
@@ -18,6 +19,9 @@ const PostDetails = () => {
   } = post;
   return (
     <div className="w-8/12 mx-auto">
+      <Helmet>
+      <title>Post Details | Volunteer Hub</title>
+      </Helmet>
       <div
        
         className="flex flex-col  bg-white border border-gray-200 rounded-lg shadow   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"

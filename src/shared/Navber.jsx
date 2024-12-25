@@ -1,11 +1,23 @@
 import { Dropdown, Button } from "flowbite-react";
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Authcontext } from "../Context/AuthContext/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Navber = () => {
-  const { user, userlogout } = useContext(Authcontext);
+  const { user, userlogout, } = useContext(Authcontext);
+  const location = useLocation();
+  const routeTitles = {
+    "/": "Home - Volunteer Hub",
+   "/login":"Login - Volunteer Hub ",
+   "/register":"Register - Volunteer Hub ",
+    "/needposts": "All Volunteer Posts - Volunteer Hub",
+    "/addpost": "Add Post - Volunteer Hub",
+    "/mypostmanage": "My Post Manage - Volunteer Hub",
+    
+  };
+  const DefaultTitle = routeTitles[location.pathname] || "Volunteer Hub";
   const handlelogout = () => {
     userlogout()
       .then((res) => {})
@@ -28,13 +40,16 @@ const Navber = () => {
       </NavLink>
       <NavLink to={"/"}>
         <li>
-          <button>Home</button>
+          <button  >Home</button>
         </li>
       </NavLink>
     </>
   );
   return (
     <div>
+      <Helmet>
+        <title>{DefaultTitle}</title>
+      </Helmet>
       <div
         className={`navbar  bg-gradient-to-r from-white via-orange-300 to-white bg-cover bg-center`}
       >
@@ -101,7 +116,7 @@ const Navber = () => {
                     className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
                   >
                     <li>
-                      <Link to={'/addpost'}>Add Volunteer need Post</Link>
+                      <Link to={'/addpost'} >Add Volunteer need Post</Link>
                     </li>
                     <li>
                       <Link to={'/mypostmanage'}>Manage My Posts </Link>
@@ -141,7 +156,7 @@ const Navber = () => {
           ) : (
             <div>
               <Link to={"/login"}>
-                <button className="btn text-black font-bold bg-orange-300 mx-4">
+                <button onClick={()=>setpageTitle(" | Login")} className="btn text-black font-bold bg-orange-300 mx-4">
                   Login
                 </button>
               </Link>
