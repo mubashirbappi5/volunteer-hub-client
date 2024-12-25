@@ -26,6 +26,7 @@ const MyvolunteerReqpost = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!",
           })
+        .then((result) => {
           if (result.isConfirmed) {
           fetch(`http://localhost:8000/volunteer/${id}`,
             {
@@ -49,6 +50,7 @@ const MyvolunteerReqpost = () => {
             console.log("delete done");
           })
         }
+    })
     }
     return (
         <>
@@ -92,6 +94,7 @@ const MyvolunteerReqpost = () => {
                           <th className="p-3 hover:text-orange-400">
                            Location
                           </th>
+                          <th></th>
                         </tr>
                       </thead>
 

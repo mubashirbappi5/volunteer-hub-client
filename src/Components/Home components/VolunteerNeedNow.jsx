@@ -14,8 +14,8 @@ const VolunteerNeedNow = () => {
 },[])
     return (
         <div className='w-11/12 mx-auto'>
-           <div className='my-6'>
-           <h1 className='text-xl font-bold text-center'>Volunteer Needs Now </h1>
+           <div className='my-10'>
+           <h1 className=' font-bold text-center text-2xl dark:text-white'>Volunteer Needs Now </h1>
            </div>
            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
             {
@@ -24,7 +24,7 @@ const VolunteerNeedNow = () => {
 
            </section>
            <div className='flex justify-center my-6'>
-            <Link to={'/needposts'} className='btn btn-outline font-semibold' >See All</Link>
+            <Link to={'/needposts'} className='btn btn-outline font-semibold dark:text-white' >See All</Link>
            </div>
 
             

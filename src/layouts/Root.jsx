@@ -2,11 +2,13 @@ import { Outlet } from "react-router-dom";
 import Navber from "../shared/Navber";
 import Footer from "../shared/Footer";
 import { Toaster } from "react-hot-toast";
+import { HelmetProvider } from "react-helmet-async";
 
 
 const Root = () => {
     return (
-        <div>
+        <div className="dark:bg-gray-800">
+             <HelmetProvider>
            <header className="mb-6">
            <Navber/>
            </header>
@@ -25,7 +27,7 @@ const Root = () => {
             <footer>
                 <Footer/>
             </footer>
-            
+            </HelmetProvider>
         </div>
     );
 };

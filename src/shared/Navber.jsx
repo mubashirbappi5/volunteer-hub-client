@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Authcontext } from "../Context/AuthContext/AuthProvider";
 import { Helmet } from "react-helmet";
+import Theme from "./Theme";
 
 const Navber = () => {
   const { user, userlogout, } = useContext(Authcontext);
@@ -28,14 +29,14 @@ const Navber = () => {
   const links = (
     <>
       <NavLink to={"/"}>
-        <li>
+        <li className="dark:hover:text-violet-600">
           <button>Home</button>
         </li>
       </NavLink>
 
       <NavLink to={"/needposts"}>
-        <li>
-          <button>All volunteer Need posts</button>
+        <li className="dark:hover:text-violet-600 ">
+          <button >All volunteer Need posts</button>
         </li>
       </NavLink>
       <NavLink to={"/"}>
@@ -51,14 +52,14 @@ const Navber = () => {
         <title>{DefaultTitle}</title>
       </Helmet>
       <div
-        className={`navbar  bg-gradient-to-r from-white via-orange-300 to-white bg-cover bg-center`}
+        className={`navbar dark:bg-gradient-to-r dark:from-gray-700 dark:via-gray-900 dark:to-gray-700 bg-gradient-to-r from-white via-orange-300 to-white bg-cover bg-center`}
       >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 dark:text-white w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -73,19 +74,20 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 dark:bg-gray-700 dark:text-white  rounded-box z-[100] mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
+          <h1 className="btn btn-ghost text-xl tooltip tooltip-bottom flex gap-2 dark:text-white"   data-tip="Volunteer-Hub">
             <img
-              className="w-10"
+              className="w-10  "
+            
               src="https://i.ibb.co.com/h9WwMPG/help.png"
               alt=""
             />
-            Volunteer{" "}
-            <span className="text-orange-400">
+           <span className=" hidden md:inline "> Volunteer</span>{" "}
+            <span className="text-orange-400 hidden md:inline dark:text-violet-600">
               <Typewriter
                 words={["-Hub"]}
                 loop={5}
@@ -96,10 +98,10 @@ const Navber = () => {
                 delaySpeed={1000}
               />
             </span>
-          </a>
+          </h1>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 dark:text-white">{links}</ul>
         </div>
         <div className="navbar-end">
         <div>
@@ -107,7 +109,7 @@ const Navber = () => {
                   <div
                     tabIndex={0}
                     role="button"
-                    className="btn btn-outline border-2 border-orange-300 text-orange-400 m-1"
+                    className="btn btn-outline dark:btn-outline border-2 border-orange-400 dark:border-violet-600 dark:text-violet-600 text-orange-400 m-1"
                   >
                     My Profile
                   </div>
@@ -156,12 +158,13 @@ const Navber = () => {
           ) : (
             <div>
               <Link to={"/login"}>
-                <button onClick={()=>setpageTitle(" | Login")} className="btn text-black font-bold bg-orange-300 mx-4">
+                <button className="btn text-black font-bold btn-outline dark:border-none dark:bg-violet-600 bg-orange-300 mx-4">
                   Login
                 </button>
               </Link>
             </div>
           )}
+          <Theme/>
         </div>
       </div>
     </div>

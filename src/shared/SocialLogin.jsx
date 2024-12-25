@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SocialLogin = () => {
-
+ const navigate = useNavigate()
     const {googleusers,name} = useContext(Authcontext)
     const handlelogin = (e)=>{
         e.preventDefault()
@@ -15,6 +16,7 @@ const SocialLogin = () => {
         .then(res=>{
             console.log(res.user)
             toast.success('Login Successful!');
+            navigate('/')
         })
         .catch(error=>{
             toast.error(error.message);
@@ -22,7 +24,7 @@ const SocialLogin = () => {
     }
     return (
         <div>
-            <button onClick={handlelogin} className="btn btn-outline"><FaGoogle />Login with Google</button>
+            <button onClick={handlelogin} className="btn btn-outline dark:bg-violet-600"><FaGoogle />Login with Google</button>
             
         </div>
     );

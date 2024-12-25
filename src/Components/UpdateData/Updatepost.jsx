@@ -121,7 +121,7 @@ const Updatepost = ({updatedata}) => {
                       required=""
                     />
                   </div>
-                  <div class="w-full">
+                  <div className="w-full">
                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                       {" "}
                       volunteers needed
@@ -163,7 +163,7 @@ const Updatepost = ({updatedata}) => {
                       onChange={(date) => setStartDate(date)}
                     />
                   </div>
-                  <div class="sm:col-span-2">
+                  <div className="sm:col-span-2">
                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                       Description
                     </label>

@@ -58,7 +58,7 @@ const BeAvolunteer = () => {
           backgroundPosition: "center 20%",
          
   }}>
-  {/* <div className="hero-overlay  bg-opacity-10"></div> */}
+ 
   <div class="absolute inset-0  bg-black bg-opacity-60"></div>
   <div className="hero-content relative z-30  text-neutral-content text-center">
     <div className="">
@@ -72,7 +72,7 @@ const BeAvolunteer = () => {
             </div>
             </div>
             <div className=' lg:px-20 px-5'>
-                <div className=" lg:absolute top-80 bg-white p-10 border rounded-md shadow-xl mx-auto  my-10 ">
+                <div className=" lg:absolute top-80 bg-white dark:bg-gray-500 p-10 border rounded-md shadow-xl mx-auto  my-10 ">
                               <form onSubmit={handleBevolunteer}>
                                 <div className="grid gap-4 lg:grid-cols-3 :grid-cols-1 sm:gap-6">
                                   <div className="sm:col-span-3">
@@ -143,7 +143,7 @@ const BeAvolunteer = () => {
                                       required=""
                                     />
                                   </div>
-                                  <div class="w-full">
+                                  <div className="w-full">
                                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                                       {" "}
                                       volunteers needed
@@ -168,7 +168,7 @@ const BeAvolunteer = () => {
                                      readOnly
                                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     >
-                                      <option selected={category}>{category}</option>
+                                      <option defaultValue={category}>{category}</option>
                                       <option value="Healthcare">Healthcare</option>
                                       <option value="Education">Education</option>
                                       <option value="Service">Social Service</option>
@@ -242,7 +242,7 @@ const BeAvolunteer = () => {
                                       required=""
                                     />
                                   </div>
-                                  <div class="sm:col-span-3">
+                                  <div className="sm:col-span-3">
                                     <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                                       Description
                                     </label>
@@ -258,7 +258,7 @@ const BeAvolunteer = () => {
                                 </div>
                                 <div className="flex justify-center items-center my-6">
                                   <input
-                                    className="btn btn-wide"
+                                    className="btn btn-wide bg-orange-400 text-white dark:bg-violet-600 dark:border-none btn-outline"
                                     type="submit"
                                     value="Request"
                                   />

@@ -49,7 +49,7 @@ const RegisterPage = () => {
     return (
         <div>
 		
-          <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-100 dark:text-gray-800">
+          <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
 	<div className="flex flex-col justify-between">
 		<div className="space-y-2">
 			<h2 className="text-4xl text-center font-bold leading-tight md:text-left lg:text-5xl">Welcome Aboard!</h2>
@@ -57,7 +57,7 @@ const RegisterPage = () => {
 		</div>
 		<Lottie animationData={registerlottie}></Lottie>
 	</div>
-	<div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800">
+	<div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-800 dark:text-gray-100">
 	<div className="mb-8 ">
 		<h1 className="my-3 text-xl font-bold">Register</h1>
 	
@@ -88,10 +88,10 @@ const RegisterPage = () => {
 			<div>
 				<input type="submit" value={'Register'} className=" btn w-full px-8 py-3 font-semibold text-white rounded-md dark:bg-violet-600 dark:text-gray-50 bg-orange-400"/>
 			</div>
-            <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
+            <p className="px-6 text-sm text-center dark:text-gray-400">Don't have an account yet?
 				<Link to={'/login'} onClick={(e)=>{setpageTitle(" | Login"),
 					e.preventDefault()}}
-				 className="hover:underline dark:text-violet-600 text-orange-400">Login</Link>.
+				 className="hover:underline dark:border-none dark:text-violet-600 text-orange-400">Login</Link>.
 			</p>
             <div className="divider  p-4">OR</div>
             <div className='flex my-5 justify-center'>

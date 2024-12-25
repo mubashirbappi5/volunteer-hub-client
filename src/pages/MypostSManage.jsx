@@ -40,6 +40,7 @@ const MypostSManage = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     })
+ .then((result) => {
     if (result.isConfirmed) {
     fetch(`http://localhost:8000/posts/${id}`, {
       method: "DELETE",
@@ -59,6 +60,7 @@ const MypostSManage = () => {
         console.log("delete done");
       });
     }
+  })
   };
 
  const handleupdate = (id)=>{
@@ -106,7 +108,7 @@ const MypostSManage = () => {
             id="default-tab"
             role="tablist"
           >
-            <li className="me-2" role="presentation">
+            <li className="me-2 dark:text-white" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
                   activeTab === "profile" ? "border-orange-500 text-orange-300" : ""
@@ -122,7 +124,7 @@ const MypostSManage = () => {
               </button>
             </li>
 
-            <li className="me-2" role="presentation">
+            <li className="me-2 dark:text-white" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
                   activeTab === "settings" ? "border-orange-500 text-orange-300" : ""
@@ -163,10 +165,10 @@ const MypostSManage = () => {
               ) : (
                 <div>
                   <div className="flex justify-between mt-6">
-                <h2 className="mb-4 text-2xl font-semibold leading-tight">
+                <h2 className="mb-4 text-2xl font-semibold dark:text-white leading-tight">
                   My Posts
                 </h2>
-                <h1 className="">shape</h1>
+                <h1 className="dark:text-white">shape</h1>
               </div>
                   <div className="overflow-x-auto">
                     <table className="min-w-full mx-auto text-xs">
@@ -193,6 +195,8 @@ const MypostSManage = () => {
                           <th className="p-3 hover:text-orange-400">
                             Volunteers Needed
                           </th>
+                          <th></th>
+                          <th></th>
                         </tr>
                       </thead>
 
