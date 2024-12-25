@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Needspostcard from './Needspostcard';
 import { Link } from 'react-router-dom';
 
 const VolunteerNeedNow = () => {
     const [needpostsData,setneedpostsData] = useState([])
-    fetch('http://localhost:8000/posts?limit=3')
+    useEffect(()=>{
+        fetch('http://localhost:8000/posts?limit=3')
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
         setneedpostsData(data)
     })
+},[])
     return (
         <div className='w-11/12 mx-auto'>
            <div className='my-6'>

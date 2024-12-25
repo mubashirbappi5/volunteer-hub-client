@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import nodata from "../assets/Animation - 1735041941677.json";
 import Lottie from "lottie-react";
 import Updatepost from "../Components/UpdateData/Updatepost";
+import MyvolunteerReqpost from "../Components/VolunteerRequest/MyvolunteerReqpost";
 
 
 const MypostSManage = () => {
@@ -87,7 +88,7 @@ const MypostSManage = () => {
             <li className="me-2" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
-                  activeTab === "profile" ? "border-blue-500" : ""
+                  activeTab === "profile" ? "border-orange-500 text-orange-300" : ""
                 }`}
                 id="profile-tab"
                 onClick={() => handleTabClick("profile")}
@@ -103,7 +104,7 @@ const MypostSManage = () => {
             <li className="me-2" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
-                  activeTab === "settings" ? "border-blue-500" : ""
+                  activeTab === "settings" ? "border-orange-500 text-orange-300" : ""
                 }`}
                 id="settings-tab"
                 onClick={() => handleTabClick("settings")}
@@ -128,16 +129,11 @@ const MypostSManage = () => {
             aria-labelledby="profile-tab"
           >
            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-              <div className="flex justify-between mt-6">
-                <h2 className="mb-4 text-2xl font-semibold leading-tight">
-                  My Posts
-                </h2>
-                <h1 className="">shape</h1>
-              </div>
+              
               {myposts.length === 0 ? (
                 <>
                   <div className="w-8/12 mx-auto flex bg-base-100 flex-col">
-                    <Lottie animationData={nodata}></Lottie>
+                    <Lottie className='md:w-96 mx-auto' animationData={nodata}></Lottie>
                     <Link to={"/addpost"} className="btn btn-outline">
                       Add Post
                     </Link>
@@ -145,6 +141,12 @@ const MypostSManage = () => {
                 </>
               ) : (
                 <div>
+                  <div className="flex justify-between mt-6">
+                <h2 className="mb-4 text-2xl font-semibold leading-tight">
+                  My Posts
+                </h2>
+                <h1 className="">shape</h1>
+              </div>
                   <div className="overflow-x-auto">
                     <table className="min-w-full mx-auto text-xs">
                       <colgroup>
@@ -205,7 +207,7 @@ const MypostSManage = () => {
                             </td>
                             <td className="p-3 ">
                               <button
-                                onClick={() => handleDelete(_id)}
+                                onClick={() => handleDelete(mypost._id)}
                                 className="btn btn-sm"
                               >
                                 Delete
@@ -229,13 +231,8 @@ const MypostSManage = () => {
             role="tabpanel"
             aria-labelledby="settings-tab"
           >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 dark:text-white">
-                Dashboard tab's associated content
-              </strong>
-              .
-            </p>
+           
+            <MyvolunteerReqpost/>
             
           </div>
         </div>
