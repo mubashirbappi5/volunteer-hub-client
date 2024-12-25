@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 import Lottie from 'lottie-react';
 import registerlottie from '../assets/Animation - 1734850071311.json'
@@ -31,11 +31,14 @@ const RegisterPage = () => {
 			}
 			Userupdateinfo(profile)
 			.then(res=>{
-				toast.success('Welcome to the Volunteer-Hub!');
+				
 			})
 			.catch(error=>{
 				console.log(error)
 			})
+			Navigate('/')
+				toast.success('Welcome to the Volunteer-Hub!');
+
 		})
 		.catch(error=>{
 			toast.error(error.message);

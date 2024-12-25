@@ -87,9 +87,7 @@ const Navber = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          {user ? (
-            <div className="flex">
-              <div>
+        <div>
                 <div className="dropdown dropdown-end">
                   <div
                     tabIndex={0}
@@ -111,6 +109,9 @@ const Navber = () => {
                   </ul>
                 </div>
               </div>
+          {user ? (
+            <div className="flex">
+              
               <div className="dropdown dropdown-hover dropdown-bottom dropdown-end px-4">
                 <div tabIndex={0} role="button" className="btn btn-circle m-1">
                   <img
