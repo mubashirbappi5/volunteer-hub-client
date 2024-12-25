@@ -3,6 +3,7 @@ import { Authcontext } from '../../Context/AuthContext/AuthProvider';
 import Lottie from 'lottie-react';
 import nodata from '../../assets/Animation - 1735041941677.json';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyvolunteerReqpost = () => {
     const [reqPosts,setreqPosts] = useState([])
@@ -14,8 +15,18 @@ const MyvolunteerReqpost = () => {
             console.log(data)
             setreqPosts(data)
         })
-    })
+    },[user])
     const handleDelete =(id)=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          })
+          if (result.isConfirmed) {
           fetch(`http://localhost:8000/volunteer/${id}`,
             {
                 method: "DELETE",
@@ -26,10 +37,18 @@ const MyvolunteerReqpost = () => {
           )
           .then((res) => res.json())
           .then((data) => {
+            if (data.deletedCount > 0) {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+            }
             const remaingsmyreq = reqPosts.filter((reqPost) =>reqPost._id !== id);
             setreqPosts(remaingsmyreq);
             console.log("delete done");
           })
+        }
     }
     return (
         <>

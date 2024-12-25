@@ -12,11 +12,13 @@ import AddNeedPost from "../pages/AddNeedPost";
 import MypostSManage from "../pages/MypostSManage";
 import BeAvolunteer from "../pages/BeAvolunteer";
 import Privateroute from "./Privateroute";
+import ErrorPage from "../pages/ErrorPage";
 
 const Mainroutes = createBrowserRouter([
     {
       path: "/",
       element: <Root/>,
+      errorElement:<ErrorPage/>,
       children:[{
         path:"/",
         element:<Home/>
@@ -38,7 +40,7 @@ const Mainroutes = createBrowserRouter([
     },
     {
       path:'/postdetails/:id',
-      element:<PostDetails/>,
+      element:<Privateroute><PostDetails/></Privateroute>,
       loader:({params})=>fetch(`http://localhost:8000/posts/${params.id}`)
       
     },

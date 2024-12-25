@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Authcontext } from './../Context/AuthContext/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddNeedPost = () => {
     const [startDate, setStartDate] = useState(new Date());
     const {user} = useContext(Authcontext)
+    const navigate = useNavigate()
 
 
     const handleaddedpost = (e)=>{
@@ -28,10 +31,16 @@ const AddNeedPost = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-         if(data.insertedId){
-           alert('add done!')
-         }
-        })
+            if(data.insertedId){
+                Swal.fire({
+                  title: "Post Added!",
+                  text: " Your volunteer need  post successfully added.",
+                  icon: "success"
+                }) 
+                navigate('/needposts')
+            }  
+            })
+    
     }
     return (
         <div>

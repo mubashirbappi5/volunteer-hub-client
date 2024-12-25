@@ -3,10 +3,12 @@ import DatePicker from "react-datepicker";
 
 import { Modal, Button } from "flowbite-react";
 import { Authcontext } from '../../Context/AuthContext/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const Updatepost = ({updatedata}) => {
      const [startDate, setStartDate] = useState(new Date());
      const{isOpen,user, handleModalToggle}=useContext(Authcontext)
-     console.log(updatedata)
+     const navigate = useNavigate()
      const {title,volunteers_needed,deadline,description,category,location,thumbnail,_id} = updatedata
 
      const handleupdatepost = (e) =>{
@@ -28,8 +30,13 @@ const Updatepost = ({updatedata}) => {
         .then(data=>{
             console.log(data)
             if(data.modifiedCount == 1){
-                alert('done')
+              Swal.fire({
+                title: "Updated!",
+                text: " Your  posts  successfully update.",
+                icon: "success"
+              });
                 handleModalToggle()
+                navigate('/mypostmanage')
 
             }
 

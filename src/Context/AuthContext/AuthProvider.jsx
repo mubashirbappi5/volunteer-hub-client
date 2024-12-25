@@ -6,17 +6,22 @@ export const Authcontext  = createContext()
 const AuthProvider = ({children}) => {
     const [user,setuser] =useState(null)
     const [isOpen, setIsOpen] = useState(false);
+    const  [loading,setloading] = useState(true)
     const provider = new GoogleAuthProvider();
     const googleusers = ()=>{
+        setloading(true)
         return signInWithPopup(auth, provider)
     }
     const usersregister = (email,password)=>{
+        setloading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const usersLogin = ( email, password) =>{
+        setloading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const Userupdateinfo = (profile)=>{
+
         return updateProfile(auth.currentUser,profile)
 
     }
@@ -26,6 +31,7 @@ const AuthProvider = ({children}) => {
            
           console.log(currentUser)
           setuser(currentUser)
+          setloading(false)
         })
         return ()=>{
             unsubscribe()
@@ -57,6 +63,8 @@ const AuthProvider = ({children}) => {
         handleModalToggle,
         setIsOpen,
         isOpen,
+        loading,
+        setloading,
 
     }
     return (

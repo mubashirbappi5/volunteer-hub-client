@@ -5,6 +5,7 @@ import nodata from "../assets/Animation - 1735041941677.json";
 import Lottie from "lottie-react";
 import Updatepost from "../Components/UpdateData/Updatepost";
 import MyvolunteerReqpost from "../Components/VolunteerRequest/MyvolunteerReqpost";
+import Swal from "sweetalert2";
 
 
 const MypostSManage = () => {
@@ -30,16 +31,34 @@ const MypostSManage = () => {
 
   const handleDelete = (id) => {
     console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    })
+    if (result.isConfirmed) {
     fetch(`http://localhost:8000/posts/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your post has been deleted.",
+            icon: "success",
+          });
+        }
         const remaingsmypost = myposts.filter((mypost) => mypost._id !== id);
         setmypost(remaingsmypost);
         console.log("delete done");
       });
+    }
   };
 
  const handleupdate = (id)=>{
@@ -48,7 +67,9 @@ const MypostSManage = () => {
     handleModalToggle()
     fetch(`http://localhost:8000/posts/${id}`)
     .then(res=>res.json())
-    .then(data=>setupdatedata(data))
+    .then(data=>{
+      setupdatedata(data)
+    })
 
  }
 

@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import {  useLoaderData, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import DatePicker from 'react-datepicker';
+import Swal from 'sweetalert2';
 
 const BeAvolunteer = () => {
     const postsData = useLoaderData()
     const {user} = useContext(Authcontext)
     const {title,volunteers_needed,deadline,description,category,location,thumbnail,_id,organizer_name,organizer_email} = postsData
   const [startDate, setStartDate] = useState(new Date());
-
+   const navigate = useNavigate()
     const handleBevolunteer = (e)=>{
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -32,7 +33,12 @@ const BeAvolunteer = () => {
         .then(res=>res.json())
         .then(data=>{
          if(data.insertedId){
-           alert('add done!')
+           Swal.fire({
+                             title: " Request Sent!",
+                             text: " Your volunteer request successfully sent.",
+                             icon: "success"
+                           }) 
+                           navigate('/needposts')
          }
         })
 
