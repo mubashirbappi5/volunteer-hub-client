@@ -3,12 +3,13 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const PostDetails = () => {
   const post = useLoaderData();
+  console.log(post)
   const {
     _id,
     thumbnail,
     title,
     deadline,
-    volunteers_need,
+    volunteers_needed,
     category,
     organizer_name,
     organizer_email,
@@ -41,7 +42,7 @@ const PostDetails = () => {
           </p>
           <h3> location: { location}</h3>
           <h3> deadline: {  deadline}</h3>
-          <h3> volunteers_need: { volunteers_need}</h3>
+          <h3> volunteers_need: {volunteers_needed}</h3>
           <h2>{organizer_name}</h2>
           <h3>{organizer_email}</h3>
 

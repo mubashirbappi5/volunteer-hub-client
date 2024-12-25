@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navber from "../shared/Navber";
 import Footer from "../shared/Footer";
+import { Toaster } from "react-hot-toast";
 
 
 const Root = () => {
@@ -11,6 +12,15 @@ const Root = () => {
            </header>
            <main className="min-h-screen">
            <Outlet/>
+           <Toaster
+           toastOptions={{
+            
+            error: {
+              style: {
+                color: 'red',
+              },
+            },
+          }} />
            </main>
             <footer>
                 <Footer/>

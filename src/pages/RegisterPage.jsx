@@ -4,6 +4,7 @@ import SocialLogin from '../shared/SocialLogin';
 import Lottie from 'lottie-react';
 import registerlottie from '../assets/Animation - 1734850071311.json'
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
+import toast from 'react-hot-toast';
 
 const RegisterPage = () => {
 	const {usersregister,Userupdateinfo} = useContext(Authcontext)
@@ -15,7 +16,12 @@ const RegisterPage = () => {
 		const photourl = form.photoURL.value
 		const password = form.password.value
 
-	
+		const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+		if (!passwordRegex.test(password)){
+			toast.error("Invalid password. Must include at least one uppercase letter, one lowercase letter, and be 6+ characters long.")
+			return
+
+		}
 		usersregister(email,password)
 		.then(res=>{
 			console.log(res.user)
@@ -25,14 +31,15 @@ const RegisterPage = () => {
 			}
 			Userupdateinfo(profile)
 			.then(res=>{
-				console.log('updated')
+				toast.success('Welcome to the Volunteer-Hub!');
 			})
 			.catch(error=>{
 				console.log(error)
 			})
 		})
 		.catch(error=>{
-			console.log(error)
+			toast.error(error.message);
+			form.reset()
 		})
 	}
     return (

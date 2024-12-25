@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
+import toast from 'react-hot-toast';
 
 const LoginPage = () => {
 	const {usersLogin} = useContext(Authcontext)
@@ -14,9 +15,12 @@ const LoginPage = () => {
 		usersLogin(email,password)
 		.then(res=>{
 			console.log(res.user)
+			toast.success('Login Successful!');
 		})
 		.catch(error=>{
-			console.log(error)
+			
+			toast.error(error.message);
+			form.reset()
 		})
 		
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 
@@ -13,9 +14,10 @@ const SocialLogin = () => {
         googleusers()
         .then(res=>{
             console.log(res.user)
+            toast.success('Login Successful!');
         })
         .catch(error=>{
-            console.log(error)
+            toast.error(error.message);
         })
     }
     return (
