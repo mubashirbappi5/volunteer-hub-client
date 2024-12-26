@@ -147,7 +147,7 @@ const Navber = () => {
                 <img
                   src={user?.photoURL}
                   alt=""
-                  className="w-10 md:12 h-10 md:h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100"
+                  className="w-10 md:w-12 h-10 md:h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100"
                  
                 />
               </div>

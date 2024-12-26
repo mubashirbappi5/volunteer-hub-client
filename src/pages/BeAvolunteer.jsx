@@ -79,8 +79,8 @@ const BeAvolunteer = () => {
           </div>
         </div>
       </div>
-      <div className=" lg:px-20 px-5">
-        <div className=" lg:absolute lg:top-80 w-full bg-white dark:bg-gray-500 md:p-10 p-2 border rounded-md shadow-xl mx-auto  my-10 ">
+      <div className=" lg:px-20 w-full px-5">
+        <div className=" lg:absolute lg:top-80 md:w-10/12 w-full bg-white dark:bg-gray-500 md:p-10 p-2 border rounded-md shadow-xl mx-auto  my-10 ">
           <form onSubmit={handleBevolunteer}>
             <div className="grid gap-4 lg:grid-cols-3 :grid-cols-1 sm:gap-6">
               <div className="sm:col-span-3">
