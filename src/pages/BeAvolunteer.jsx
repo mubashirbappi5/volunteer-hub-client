@@ -4,6 +4,7 @@ import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import DatePicker from 'react-datepicker';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 const BeAvolunteer = () => {
     const postsData = useLoaderData()
@@ -24,16 +25,10 @@ const BeAvolunteer = () => {
         newdata.volunteers_needed = volunteers_needed
         console.log(newdata)
 
-        fetch('http://localhost:8000/volunteer',{
-            method:'POST',
-            headers:{
-             "content-type":"application/json"
-            },
-            body:JSON.stringify(newdata)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-         if(data.insertedId){
+        axios.post('http://localhost:8000/volunteer',newdata,{ withCredentials:true})
+       
+        .then(res=>{
+         if(res.data.insertedId){
            Swal.fire({
                              title: " Request Sent!",
                              text: " Your volunteer request successfully sent.",

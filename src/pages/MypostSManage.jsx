@@ -7,20 +7,23 @@ import Updatepost from "../Components/UpdateData/Updatepost";
 import MyvolunteerReqpost from "../Components/VolunteerRequest/MyvolunteerReqpost";
 import Swal from "sweetalert2";
 
+import useAxios from "../Hooks/UseAxios";
+
 
 const MypostSManage = () => {
  
   const { user,handleModalToggle } = useContext(Authcontext);
   const [myposts, setmypost] = useState([]);
   const[updatedata,setupdatedata] =useState({})
+  const axiosSecure = useAxios()
 
   useEffect(() => {
-    fetch(`http://localhost:8000/posts?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setmypost(data);
-      });
+    axiosSecure.get(`posts?email=${user?.email}`)
+      .then((res) =>{
+        console.log(res.data)
+        setmypost(res.data);
+      } )
+      
   }, [user]);
 
   const [activeTab, setActiveTab] = useState("profile");
@@ -42,13 +45,10 @@ const MypostSManage = () => {
     })
  .then((result) => {
     if (result.isConfirmed) {
-    fetch(`http://localhost:8000/posts/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
+    axios.delete(`http://localhost:8000/posts/${id}`,{ withCredentials:true} )
+     
+      .then(res => {
+        if (res.data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted!",
             text: "Your post has been deleted.",
@@ -61,6 +61,9 @@ const MypostSManage = () => {
       });
     }
   })
+
+  
+
   };
 
  const handleupdate = (id)=>{

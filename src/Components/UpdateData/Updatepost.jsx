@@ -5,6 +5,7 @@ import { Modal, Button } from "flowbite-react";
 import { Authcontext } from '../../Context/AuthContext/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Updatepost = ({updatedata}) => {
      const [startDate, setStartDate] = useState(new Date());
      const{isOpen,user, handleModalToggle}=useContext(Authcontext)
@@ -21,14 +22,11 @@ const Updatepost = ({updatedata}) => {
         newdata.deadline =startDate
         newdata.volunteers_needed = volunteers_needed
         console.log(newdata)
-        fetch(`http://localhost:8000/posts/${_id}`,{
-            method:'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body:JSON.stringify(newdata)
+        axios.put(`http://localhost:8000/posts/${_id}`,newdata,{
+          withCredentials:true
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
+        .then(res=>{
+            console.log(res.data)
             if(data.modifiedCount == 1){
               Swal.fire({
                 title: "Updated!",
@@ -39,8 +37,8 @@ const Updatepost = ({updatedata}) => {
                 navigate('/mypostmanage')
 
             }
-
-        })
+          
+     })
 
      }
     return (

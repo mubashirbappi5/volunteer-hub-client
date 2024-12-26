@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Authcontext } from './../Context/AuthContext/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddNeedPost = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -22,12 +23,9 @@ const AddNeedPost = () => {
         newdata.volunteers_needed = volunteers_needed
         console.log(newdata)
 
-        fetch('http://localhost:8000/posts',{
-            method:'POST',
-            headers:{
-             "content-type":"application/json"
-            },
-            body:JSON.stringify(newdata)
+        axios.post('http://localhost:8000/posts',newdata,{
+            withCredentials:true
+           
         })
         .then(res=>res.json())
         .then(data=>{

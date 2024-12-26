@@ -4,17 +4,17 @@ import Lottie from 'lottie-react';
 import nodata from '../../assets/Animation - 1735041941677.json';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxios from '../../Hooks/UseAxios';
+import axios from 'axios';
 
 const MyvolunteerReqpost = () => {
     const [reqPosts,setreqPosts] = useState([])
-    const {user} = useContext(Authcontext)
+    const {user} = useContext(Authcontext);
+    const axiosSecure = useAxios()
     useEffect(()=>{
-        fetch(`http://localhost:8000/volunteer?email=${user?.email}`)
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            setreqPosts(data)
-        })
+        axiosSecure(`volunteer?email=${user?.email}`)
+        .then(res=>{setreqPosts(res.data)})
+       
     },[user])
     const handleDelete =(id)=>{
         Swal.fire({
@@ -28,17 +28,17 @@ const MyvolunteerReqpost = () => {
           })
         .then((result) => {
           if (result.isConfirmed) {
-          fetch(`http://localhost:8000/volunteer/${id}`,
+          axios.delete(`http://localhost:8000/volunteer/${id}`,
             {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-            }
+                withCredentials:true})
+       
+  
+    
             
-
-          )
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
+       
+      
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
                 Swal.fire({
                   title: "Deleted!",
                   text: "Your file has been deleted.",
@@ -50,7 +50,10 @@ const MyvolunteerReqpost = () => {
             console.log("delete done");
           })
         }
+        
+    
     })
+
     }
     return (
         <>

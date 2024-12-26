@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebace/Firebace.init';
 import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 export const Authcontext  = createContext()
 const AuthProvider = ({children}) => {
@@ -30,10 +31,25 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,currentUser=>{
-           
+            setuser(currentUser)
           console.log(currentUser)
-          setuser(currentUser)
-          setloading(false)
+           if(currentUser?.email){
+            const user = {email:currentUser.email}
+            axios.post('http://localhost:8000/jwt',user,{withCredentials:true})
+            .then(res=>{
+                console.log(res.data)
+                setloading(false)
+            })
+           }
+           else{
+            axios.post('http://localhost:8000/signout',{},{withCredentials:true})
+            .then(res=> {console.log('log out',res.data)
+                setloading(false)
+            })
+           }
+
+         
+         
         })
         return ()=>{
             unsubscribe()
@@ -72,6 +88,7 @@ const AuthProvider = ({children}) => {
         setloading,
         setpageTitle,
         pagetitle,
+        userlogout,
 
     }
     return (

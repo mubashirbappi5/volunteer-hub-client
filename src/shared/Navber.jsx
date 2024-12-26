@@ -158,7 +158,7 @@ const Navber = () => {
           ) : (
             <div>
               <Link to={"/login"}>
-                <button className="btn text-black font-bold btn-outline dark:border-none dark:bg-violet-600 bg-orange-300 mx-4">
+                <button className="btn text-black font-bold btn-outline border-none dark:border-none dark:bg-violet-600 bg-orange-300 mx-4">
                   Login
                 </button>
               </Link>

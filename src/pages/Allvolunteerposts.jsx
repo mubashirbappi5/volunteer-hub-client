@@ -78,7 +78,7 @@ const Allvolunteerposts = () => {
           All volunteer need posts
         </h1>
       </div>
-      <div className="p-4 flex items-center justify-between my-6 border">
+      <div className="p-4 flex items-center justify-between rounded-lg my-6 border">
         <h1 className="font-bold text-blue-500">All posts {CardLayout?'Cards':'Table'}</h1>
         <div className="   ">
           <fieldset className="w-full flex justify-center space-y-1 dark:text-gray-800">
