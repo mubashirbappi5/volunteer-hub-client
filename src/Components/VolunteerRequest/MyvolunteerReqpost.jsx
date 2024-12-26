@@ -80,9 +80,10 @@ const MyvolunteerReqpost = () => {
                     <tr className="text-left border-b">
                       <th className="p-3 hover:text-orange-400">NO.</th>
                       <th className="p-3 hover:text-orange-400">Post Title</th>
-                      <th className="p-3 hover:text-orange-400">Category</th>
+                      
                       <th className="p-3 hover:text-orange-400">Deadline</th>
                       <th className="p-3 hover:text-orange-400">Location</th>
+                      <th></th>
                       <th></th>
                     </tr>
                   </thead>
@@ -96,11 +97,7 @@ const MyvolunteerReqpost = () => {
                         <td className="p-3">
                           <h1 className="font-medium">{reqPost.title}</h1>
                         </td>
-                        <td className="p-3">
-                          <p className="hover:font-medium">
-                            {reqPost.category}
-                          </p>
-                        </td>
+                        
                         <td className="p-3">
                           <p className="hover:font-medium">
                             {new Date(reqPost.deadline).toLocaleDateString()}
