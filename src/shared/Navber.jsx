@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import Theme from "./Theme";
 
 const Navber = () => {
-  const { user, userlogout, } = useContext(Authcontext);
+  const { user, userlogout,loading } = useContext(Authcontext);
   const location = useLocation();
   const routeTitles = {
     "/": "Home - Volunteer Hub",
@@ -17,31 +17,40 @@ const Navber = () => {
     "/addpost": "Add Post - Volunteer Hub",
     "/mypostmanage": "My Post Manage - Volunteer Hub",
     
+    "/about": "About - Volunteer Hub",
+    
+    "/contact": "Contact - Volunteer Hub",
+    
   };
   const DefaultTitle = routeTitles[location.pathname] || "Volunteer Hub";
   const handlelogout = () => {
     userlogout()
       .then((res) => {})
       .catch((error) => {
-        console.log(error);
+       
       });
   };
   const links = (
     <>
       <NavLink to={"/"}>
         <li className="dark:hover:text-violet-600">
-          <button>Home</button>
+          <button className="font-semibold">Home</button>
         </li>
       </NavLink>
 
       <NavLink to={"/needposts"}>
         <li className="dark:hover:text-violet-600 ">
-          <button >All volunteer Need posts</button>
+          <button className="font-semibold" >All volunteer Need posts</button>
         </li>
       </NavLink>
-      <NavLink to={"/"}>
+      <NavLink to={"/about"}>
         <li>
-          <button  >Home</button>
+          <button className="font-semibold" >About</button>
+        </li>
+      </NavLink>
+      <NavLink to={"/contact"}>
+        <li>
+          <button className="font-semibold" >Contact</button>
         </li>
       </NavLink>
     </>
@@ -79,9 +88,9 @@ const Navber = () => {
               {links}
             </ul>
           </div>
-          <h1 className="btn btn-ghost text-xl tooltip tooltip-bottom flex gap-2 dark:text-white"   data-tip="Volunteer-Hub">
+          <h1 className="btn btn-ghost text-xl tooltip tooltip-bottom flex md:gap-2 dark:text-white"   data-tip="Volunteer-Hub">
             <img
-              className="w-10  "
+              className="w-6 md:w-10  "
             
               src="https://i.ibb.co.com/h9WwMPG/help.png"
               alt=""
@@ -109,7 +118,7 @@ const Navber = () => {
                   <div
                     tabIndex={0}
                     role="button"
-                    className="btn btn-outline dark:btn-outline border-2 border-orange-400 dark:border-violet-600 dark:text-violet-600 text-orange-400 m-1"
+                    className=" btn btn-outline  dark:btn-outline border-2 border-orange-400 dark:border-violet-600 dark:text-violet-600 text-orange-400 m-1"
                   >
                     My Profile
                   </div>
@@ -126,36 +135,40 @@ const Navber = () => {
                   </ul>
                 </div>
               </div>
-          {user ? (
+            
+             
+         {user ? (
+          <div>
+             { loading?<div className="skeleton h-16 w-16 shrink-0 rounded-full"></div>:
             <div className="flex">
               
-              <div className="dropdown dropdown-hover dropdown-bottom dropdown-end px-4">
-                <div tabIndex={0} role="button" className="btn btn-circle m-1">
-                  <img
-                    src={user?.photoURL}
-                    alt=""
-                    className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100"
-                   
-                  />
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
-                >
-                  <li>
-                    <h1 className="font-semibold text-xl text-orange-400">
-                      {user?.displayName}
-                    </h1>
-                  </li>
-                  <li>
-                    <button onClick={handlelogout} className="btn btn-sm">
-                      logout
-                    </button>
-                  </li>
-                </ul>
+            <div className="dropdown dropdown-hover dropdown-bottom dropdown-end px-4">
+              <div tabIndex={0} role="button" className="btn btn-circle m-1">
+                <img
+                  src={user?.photoURL}
+                  alt=""
+                  className="w-10 md:12 h-10 md:h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 ring-orange-400 dark:ring-offset-gray-100"
+                 
+                />
               </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
+              >
+                <li>
+                  <h1 className="font-semibold text-xl text-orange-400">
+                    {user?.displayName}
+                  </h1>
+                </li>
+                <li>
+                  <button onClick={handlelogout} className="btn btn-sm">
+                    logout
+                  </button>
+                </li>
+              </ul>
             </div>
-          ) : (
+          </div>
+} </div>) : (
             <div>
               <Link to={"/login"}>
                 <button className="btn text-black font-bold btn-outline border-none dark:border-none dark:bg-violet-600 bg-orange-300 mx-4">
@@ -164,6 +177,8 @@ const Navber = () => {
               </Link>
             </div>
           )}
+         
+       
           <Theme/>
         </div>
       </div>

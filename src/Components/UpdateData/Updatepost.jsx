@@ -1,49 +1,57 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 
 import { Modal, Button } from "flowbite-react";
-import { Authcontext } from '../../Context/AuthContext/AuthProvider';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-const Updatepost = ({updatedata}) => {
-     const [startDate, setStartDate] = useState(new Date());
-     const{isOpen,user, handleModalToggle}=useContext(Authcontext)
-     const navigate = useNavigate()
-     const {title,volunteers_needed,deadline,description,category,location,thumbnail,_id} = updatedata
+import { Authcontext } from "../../Context/AuthContext/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import useAxios from "../../Hooks/UseAxios";
 
-     const handleupdatepost = (e) =>{
-        e.preventDefault()
-        const formData = new FormData(e.target)
-        const formObject = Object.fromEntries(formData.entries());
-        console.log(formObject)
-        const {volunteersNeeded, ...newdata}= formObject
-       const volunteers_needed = parseInt(volunteersNeeded)
-        newdata.deadline =startDate
-        newdata.volunteers_needed = volunteers_needed
-        console.log(newdata)
-        axios.put(`http://localhost:8000/posts/${_id}`,newdata,{
-          withCredentials:true
-        })
-        .then(res=>{
-            console.log(res.data)
-            if(data.modifiedCount == 1){
-              Swal.fire({
-                title: "Updated!",
-                text: " Your  posts  successfully update.",
-                icon: "success"
-              });
-                handleModalToggle()
-                navigate('/mypostmanage')
+const Updatepost = ({ updatedata }) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const { isOpen, user, handleModalToggle } = useContext(Authcontext);
+  const navigate = useNavigate();
+  const {
+    title,
+    volunteers_needed,
+    deadline,
+    description,
+    category,
+    location,
+    thumbnail,
+    _id,
+  } = updatedata;
+  const axiosSecure = useAxios();
+  const handleupdatepost = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formObject = Object.fromEntries(formData.entries());
 
-            }
-          
-     })
+    const { volunteersNeeded, ...newdata } = formObject;
+    const volunteers_needed = parseInt(volunteersNeeded);
+    newdata.deadline = startDate;
+    newdata.volunteers_needed = volunteers_needed;
 
-     }
-    return (
-        <div>
-            <div>
+    axiosSecure
+      .put(
+        `posts/${_id}`,
+        newdata
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Updated!",
+            text: " Your  posts  successfully update.",
+            icon: "success",
+          });
+          handleModalToggle();
+          navigate("/");
+        }
+      });
+  };
+  return (
+    <div>
+      <div>
         <Modal
           className="bg-black/40  "
           show={isOpen}
@@ -63,9 +71,8 @@ const Updatepost = ({updatedata}) => {
                     <input
                       type="text"
                       name="title"
-                     defaultValue={title}
+                      defaultValue={title}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    
                       required=""
                     />
                   </div>
@@ -140,10 +147,9 @@ const Updatepost = ({updatedata}) => {
                     </label>
                     <select
                       name="category"
-                     
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     >
-                      <option selected={category}>{category}</option>
+                      <option defaultValue={category}>{category}</option>
                       <option value="Healthcare">Healthcare</option>
                       <option value="Education">Education</option>
                       <option value="Service">Social Service</option>
@@ -186,9 +192,8 @@ const Updatepost = ({updatedata}) => {
           </Modal.Body>
         </Modal>
       </div>
-            
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Updatepost;

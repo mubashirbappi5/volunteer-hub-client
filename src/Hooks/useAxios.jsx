@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8000/',
+    baseURL: 'https://volunteer-hub-server-alpha.vercel.app/',
     withCredentials:true
   });
 const useAxios = () => {

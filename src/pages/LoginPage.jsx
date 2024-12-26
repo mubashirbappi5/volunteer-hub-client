@@ -1,22 +1,25 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../shared/SocialLogin';
 import { Authcontext } from '../Context/AuthContext/AuthProvider';
 import toast from 'react-hot-toast';
-import { Helmet } from 'react-helmet';
+import {  motion } from "framer-motion";
 
 const LoginPage = () => {
-	const {usersLogin,pagetitle,setpageTitle} = useContext(Authcontext)
+	const {usersLogin} = useContext(Authcontext)
+	const location = useLocation()
+	const navigate = useNavigate()
 	const handlelogin = (e)=>{
 		e.preventDefault();
 		const form = e.target
 		const email = form.email.value
 		const password = form.password.value
-		console.log(email,password)
+		
 		usersLogin(email,password)
 		.then(res=>{
-			console.log(res.user)
+			
 			toast.success('Login Successful!');
+			navigate(location?.state?location.state:'/')
 		})
 		.catch(error=>{
 			
@@ -32,7 +35,12 @@ const LoginPage = () => {
          <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
 	<div className="flex flex-col justify-between">
 		<div className="space-y-2">
-			<h2 className="text-4xl text-center font-bold leading-tight md:text-left lg:text-5xl">Welcome Back!</h2>
+		<h1
+						className="text-4xl text-center font-bold leading-tight md:text-left lg:text-5xl">Welcome  <motion.span
+                            animate={{ color: ['#FF5733', '#33FF57', '#5733FF', '#FFD700', '#FF1493'] }}
+                            transition={{ duration: 10, repeat: Infinity }}
+                        >Back!</motion.span> </h1>
+			
 			<div className="dark:text-gray-600  text-center  md:text-left">Login to access your account.</div>
 		</div>
 		<img src="https://i.ibb.co.com/dB6qxPP/rb-7863.png" alt="" className="p-6 " />

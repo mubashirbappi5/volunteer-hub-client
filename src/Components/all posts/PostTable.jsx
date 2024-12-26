@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PostTable = ({foundPosts}) => {
-    console.log(foundPosts)
+    
     return (
         <div>
             <div className={`overflow-x-auto `}>

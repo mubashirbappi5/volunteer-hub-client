@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => {
-  console.log(post);
+ 
   const { _id, deadline, volunteers_needed, title, thumbnail, location } = post;
 
   return (

@@ -9,21 +9,16 @@ import Swal from "sweetalert2";
 
 import useAxios from "../Hooks/UseAxios";
 
-
 const MypostSManage = () => {
- 
-  const { user,handleModalToggle } = useContext(Authcontext);
+  const { user, handleModalToggle } = useContext(Authcontext);
   const [myposts, setmypost] = useState([]);
-  const[updatedata,setupdatedata] =useState({})
-  const axiosSecure = useAxios()
+  const [updatedata, setupdatedata] = useState({});
+  const axiosSecure = useAxios();
 
   useEffect(() => {
-    axiosSecure.get(`posts?email=${user?.email}`)
-      .then((res) =>{
-        console.log(res.data)
-        setmypost(res.data);
-      } )
-      
+    axiosSecure.get(`posts?email=${user?.email}`).then((res) => {
+      setmypost(res.data);
+    });
   }, [user]);
 
   const [activeTab, setActiveTab] = useState("profile");
@@ -33,7 +28,6 @@ const MypostSManage = () => {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,43 +36,36 @@ const MypostSManage = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    })
- .then((result) => {
-    if (result.isConfirmed) {
-    axios.delete(`http://localhost:8000/posts/${id}`,{ withCredentials:true} )
-     
-      .then(res => {
-        if (res.data.deletedCount > 0) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your post has been deleted.",
-            icon: "success",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .delete(`posts/${id}`)
+
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your post has been deleted.",
+                icon: "success",
+              });
+            }
+            const remaingsmypost = myposts.filter(
+              (mypost) => mypost._id !== id
+            );
+            setmypost(remaingsmypost);
           });
-        }
-        const remaingsmypost = myposts.filter((mypost) => mypost._id !== id);
-        setmypost(remaingsmypost);
-        console.log("delete done");
-      });
-    }
-  })
-
-  
-
+      }
+    });
   };
 
- const handleupdate = (id)=>{
-   
-    console.log(id)
-    handleModalToggle()
-    fetch(`http://localhost:8000/posts/${id}`)
-    .then(res=>res.json())
-    .then(data=>{
-      setupdatedata(data)
-    })
-
- }
-
-  
+  const handleupdate = (id) => {
+    handleModalToggle();
+    fetch(`https://volunteer-hub-server-alpha.vercel.app/posts/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setupdatedata(data);
+      });
+  };
 
   return (
     <div>
@@ -114,7 +101,9 @@ const MypostSManage = () => {
             <li className="me-2 dark:text-white" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
-                  activeTab === "profile" ? "border-orange-500 text-orange-300" : ""
+                  activeTab === "profile"
+                    ? "border-orange-500 text-orange-300"
+                    : ""
                 }`}
                 id="profile-tab"
                 onClick={() => handleTabClick("profile")}
@@ -123,14 +112,16 @@ const MypostSManage = () => {
                 aria-controls="profile"
                 aria-selected={activeTab === "profile" ? "true" : "false"}
               >
-               My volunteer need post
+                My volunteer need post
               </button>
             </li>
 
             <li className="me-2 dark:text-white" role="presentation">
               <button
                 className={`inline-block p-4 border-b-2 rounded-t-lg ${
-                  activeTab === "settings" ? "border-orange-500 text-orange-300" : ""
+                  activeTab === "settings"
+                    ? "border-orange-500 text-orange-300"
+                    : ""
                 }`}
                 id="settings-tab"
                 onClick={() => handleTabClick("settings")}
@@ -139,8 +130,7 @@ const MypostSManage = () => {
                 aria-controls="settings"
                 aria-selected={activeTab === "settings" ? "true" : "false"}
               >
-              My Volunteer Request Post
-
+                My Volunteer Request Post
               </button>
             </li>
           </ul>
@@ -154,12 +144,14 @@ const MypostSManage = () => {
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-           <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-              
+            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
               {myposts.length === 0 ? (
                 <>
                   <div className="w-8/12 mx-auto flex bg-base-100 flex-col">
-                    <Lottie className='md:w-96 mx-auto' animationData={nodata}></Lottie>
+                    <Lottie
+                      className="md:w-96 mx-auto"
+                      animationData={nodata}
+                    ></Lottie>
                     <Link to={"/addpost"} className="btn btn-outline">
                       Add Post
                     </Link>
@@ -168,11 +160,11 @@ const MypostSManage = () => {
               ) : (
                 <div>
                   <div className="flex justify-between mt-6">
-                <h2 className="mb-4 text-2xl font-semibold dark:text-white leading-tight">
-                  My Posts
-                </h2>
-                <h1 className="dark:text-white">shape</h1>
-              </div>
+                    <h2 className="mb-4 text-2xl font-semibold dark:text-white leading-tight">
+                      My Posts
+                    </h2>
+                    <h1 className="dark:text-white">shape</h1>
+                  </div>
                   <div className="overflow-x-auto">
                     <table className="min-w-full mx-auto text-xs">
                       <colgroup>
@@ -228,9 +220,11 @@ const MypostSManage = () => {
                               </p>
                             </td>
                             <td className="p-3 text-right">
-                             
-                              <button  className="btn btn-sm" onClick={()=>handleupdate(mypost._id)}>
-                              Update
+                              <button
+                                className="btn btn-sm"
+                                onClick={() => handleupdate(mypost._id)}
+                              >
+                                Update
                               </button>
                             </td>
                             <td className="p-3 ">
@@ -250,7 +244,7 @@ const MypostSManage = () => {
               )}
             </div>
           </div>
-          
+
           <div
             className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${
               activeTab === "settings" ? "" : "hidden"
@@ -259,16 +253,13 @@ const MypostSManage = () => {
             role="tabpanel"
             aria-labelledby="settings-tab"
           >
-           
-            <MyvolunteerReqpost/>
-            
+            <MyvolunteerReqpost />
           </div>
         </div>
       </div>
 
       {/* -------------------------- */}
-      <Updatepost updatedata={updatedata}/>
-      
+      <Updatepost updatedata={updatedata} />
     </div>
   );
 };

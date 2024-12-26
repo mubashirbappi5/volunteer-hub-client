@@ -21,7 +21,7 @@ const Allvolunteerposts = () => {
     );
     setfoundPosts(foundPosts);
   };
-  console.log(posts);
+ 
 
   return (
     <div className="w-11/12 mx-auto mb-10">
@@ -78,8 +78,9 @@ const Allvolunteerposts = () => {
           All volunteer need posts
         </h1>
       </div>
-      <div className="p-4 flex items-center justify-between rounded-lg my-6 border">
+      <div className="p-4 md:flex-row flex-col gap-6 flex items-center justify-between rounded-lg my-6 border">
         <h1 className="font-bold text-blue-500">All posts {CardLayout?'Cards':'Table'}</h1>
+        <h1 className="font-bold dark:text-white">Total Post:  {foundPosts.length}</h1>
         <div className="   ">
           <fieldset className="w-full flex justify-center space-y-1 dark:text-gray-800">
             <label htmlFor="Search" className="hidden">

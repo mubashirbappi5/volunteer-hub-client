@@ -11,7 +11,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 const PostDetails = () => {
   const navigate = useNavigate()
   const post = useLoaderData();
-  console.log(post)
+  
   const {
     _id,
     thumbnail,
@@ -35,7 +35,7 @@ const PostDetails = () => {
    
   }
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="md:w-8/12 w-full  mx-auto">
       <Helmet>
       <title>Post Details | Volunteer Hub</title>
       </Helmet>
