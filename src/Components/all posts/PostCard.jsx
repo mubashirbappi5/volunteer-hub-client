@@ -4,32 +4,25 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ post }) => {
  
-  const { _id, deadline, volunteers_needed, title, thumbnail, location } = post;
+  const { _id, description, volunteers_needed, title, thumbnail, location } = post;
 
   return (
     <div className="">
       <div className="max-w-sm h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <img className="rounded-t-lg h-52 w-full" src={thumbnail} alt="" />
+        <img className="rounded-t-lg h-52 object-cover w-full" src={thumbnail} alt="" />
 
-        <div className="p-5  space-y-4">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <div className="p-2  space-y-4">
+         <div className="flex justify-between">
+         <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
-          <div className="flex justify-between items-center">
-            <h6 className="font-light dark:text-gray-400">
-              Volunteers Need:{" "}
-              <span className="font-medium">{volunteers_needed}</span>
-            </h6>
-            <h6 className="flex items-center gap-2 font-thin dark:text-gray-400 text-sm">
+          <h6 className="flex items-center gap-2 font-thin dark:text-gray-400 text-sm">
               {" "}
               <FaLocationDot />
               {location}
             </h6>
-          </div>
-          <h6 className="font-light dark:text-gray-400">
-            Deadline: {new Date(deadline).toLocaleDateString()}
-          </h6>
-
+         </div>
+          <p>{description.slice(0, 40)}</p>
           <Link
             to={`/postdetails/${_id}`}
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

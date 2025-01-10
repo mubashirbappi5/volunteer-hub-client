@@ -41,7 +41,7 @@ const AddNeedPost = () => {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 bg-cover bg-center  "style={{ backgroundImage: `url(${img1})`}}>
-        <div className="glass-effect py-8 px-4 mx-auto w-full lg:py-16">
+        <div className="glass-effect  w-9/12 p-6  mx-auto ">
           <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             Add a Volunteer Needs Post
           </h2>

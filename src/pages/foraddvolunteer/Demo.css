@@ -1,14 +1,13 @@
 .glass-effect {
     background: rgba(255, 255, 255, 0.1); /* Transparent white background */
     border-radius: 10px;
-    padding: 20px;
+    
     backdrop-filter: blur(10px); /* Apply blur to background */
     -webkit-backdrop-filter: blur(10px); /* For Safari */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     color: white;
     font-family: Arial, sans-serif;
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+   
+    
   }
   
