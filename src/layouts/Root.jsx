@@ -9,10 +9,10 @@ const Root = () => {
     return (
         <div className="dark:bg-gray-800">
              <HelmetProvider>
-           <header className="mb-6">
+           <header className="fixed z-50 w-full">
            <Navber/>
            </header>
-           <main className="min-h-screen">
+           <main className="pt-24  min-h-screen">
            <Outlet/>
            <Toaster
            toastOptions={{

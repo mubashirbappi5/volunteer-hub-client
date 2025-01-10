@@ -53,6 +53,28 @@ const Navber = () => {
           <button className="font-semibold" >Contact</button>
         </li>
       </NavLink>
+      <li>
+      <div className="dropdown dropdown-bottom">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="    dark:text-violet-600 text-orange-400 m-1"
+                  >
+                    My Profile
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
+                  >
+                    <li>
+                      <Link to={'/addpost'} >Add Volunteer need Post</Link>
+                    </li>
+                    <li>
+                      <Link to={'/mypostmanage'}>Manage My Posts </Link>
+                    </li>
+                  </ul>
+                </div>
+      </li>
     </>
   );
   return (
@@ -114,26 +136,7 @@ const Navber = () => {
         </div>
         <div className="navbar-end">
         <div>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className=" btn btn-outline  dark:btn-outline border-2 border-orange-400 dark:border-violet-600 dark:text-violet-600 text-orange-400 m-1"
-                  >
-                    My Profile
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
-                  >
-                    <li>
-                      <Link to={'/addpost'} >Add Volunteer need Post</Link>
-                    </li>
-                    <li>
-                      <Link to={'/mypostmanage'}>Manage My Posts </Link>
-                    </li>
-                  </ul>
-                </div>
+               
               </div>
             
              

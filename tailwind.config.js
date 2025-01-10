@@ -7,10 +7,17 @@ export default {
   ],
   theme: {
     extend: {},
+
   },
   plugins: [
     require('flowbite/plugin'),
     require('daisyui'),
   ],
+  daisyui: {
+    themes: [
+      // Disable dark mode and only use light theme
+      'light', // This ensures that only the light theme is available
+    ],
+  },
 }
 
