@@ -4,8 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Authcontext } from "./../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
+import img1 from '../assets/image/Volunteering-rafiki.png'
 import useAxios from "../Hooks/UseAxios";
+import './foraddvolunteer/Demo.css'
 
 const AddNeedPost = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -39,12 +40,12 @@ const AddNeedPost = () => {
   };
   return (
     <div>
-      <section class="bg-white dark:bg-gray-900">
-        <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <section className="bg-white dark:bg-gray-900 bg-cover bg-center  "style={{ backgroundImage: `url(${img1})`}}>
+        <div className="glass-effect py-8 px-4 mx-auto w-full lg:py-16">
           <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             Add a Volunteer Needs Post
           </h2>
-          <form onSubmit={handleaddedpost}>
+          <form  onSubmit={handleaddedpost}>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
               <div className="sm:col-span-2">
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -164,6 +165,9 @@ const AddNeedPost = () => {
             </div>
           </form>
         </div>
+
+
+       
       </section>
     </div>
   );

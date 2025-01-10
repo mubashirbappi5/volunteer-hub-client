@@ -8,10 +8,10 @@ const PostCard = ({ post }) => {
 
   return (
     <div className="">
-      <div className="max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-sm h-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <img className="rounded-t-lg h-52 w-full" src={thumbnail} alt="" />
 
-        <div className="p-5 space-y-4">
+        <div className="p-5  space-y-4">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
