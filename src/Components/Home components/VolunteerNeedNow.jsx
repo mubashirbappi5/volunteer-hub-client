@@ -27,7 +27,7 @@ const VolunteerNeedNow = () => {
           <span className="loading loading-bars loading-lg mx-auto"></span>
         </div>
       ) : (
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           {needpostsData.map((post, idx) => (
             <Needspostcard key={idx} post={post}></Needspostcard>
           ))}

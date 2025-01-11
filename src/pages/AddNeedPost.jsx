@@ -4,9 +4,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Authcontext } from "./../Context/AuthContext/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import img1 from '../assets/image/Volunteering-rafiki.png'
+import { FaRegCalendarAlt, FaMapMarkerAlt, FaUsers, FaPen } from "react-icons/fa";
+import { MdCategory } from "react-icons/md";
+import { FiImage } from "react-icons/fi";
+import img1 from "../assets/image/Volunteering-rafiki.png";
 import useAxios from "../Hooks/UseAxios";
-import './foraddvolunteer/Demo.css'
+import "./foraddvolunteer/Demo.css";
 
 const AddNeedPost = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -24,114 +27,88 @@ const AddNeedPost = () => {
     newdata.deadline = startDate;
     newdata.volunteers_needed = volunteers_needed;
 
-    axiosSecure
-      .post("posts", newdata)
-
-      .then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire({
-            title: "Post Added!",
-            text: " Your volunteer need  post successfully added.",
-            icon: "success",
-          });
-          navigate("/needposts");
-        }
-      });
+    axiosSecure.post("posts", newdata).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Post Added!",
+          text: "Your volunteer needs post has been successfully added.",
+          icon: "success",
+        });
+        navigate("/needposts");
+      }
+    });
   };
+
   return (
-    <div>
-      <section className="bg-white dark:bg-gray-900 bg-cover bg-center  "style={{ backgroundImage: `url(${img1})`}}>
-        <div className="glass-effect  w-9/12 p-6  mx-auto ">
-          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+    <div className="my-10">
+      <section
+        className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex justify-center items-center"
+        style={{ backgroundImage: `url(${img1})`, backgroundSize: "cover", backgroundBlendMode: "overlay" }}
+      >
+        <div className="bg-white shadow-lg rounded-xl p-8 w-11/12 sm:w-9/12 lg:w-7/12 xl:w-6/12">
+          <h2 className="text-2xl font-bold text-center text-blue-800 mb-6">
             Add a Volunteer Needs Post
           </h2>
-          <form  onSubmit={handleaddedpost}>
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <form onSubmit={handleaddedpost}>
+            <div className="grid gap-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Post Title
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <FaPen /> Post Title
                 </label>
                 <input
                   type="text"
                   name="title"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Title"
-                  required=""
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Enter the post title"
+                  required
                 />
               </div>
-              <div className="w-full">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Thumbnail{" "}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <FiImage /> Thumbnail
                 </label>
                 <input
                   type="text"
                   name="thumbnail"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Enter Thumbnail url"
-                  required=""
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Enter thumbnail URL"
+                  required
                 />
               </div>
-              <div className="w-full">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Location
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <FaMapMarkerAlt /> Location
                 </label>
                 <input
                   type="text"
                   name="location"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Enter Location"
-                  required=""
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Enter location"
+                  required
                 />
               </div>
-              <div className="w-full">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Organizer name{" "}
-                </label>
-                <input
-                  type="text"
-                  name="organizer_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  readOnly
-                  defaultValue={user?.displayName}
-                  required=""
-                />
-              </div>
-              <div className="w-full">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  organizer email{" "}
-                </label>
-                <input
-                  type="text"
-                  name="organizer_email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  readOnly
-                  defaultValue={user?.email}
-                  required=""
-                />
-              </div>
-              <div className="w-full">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  {" "}
-                  volunteers needed
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <FaUsers /> Volunteers Needed
                 </label>
                 <input
                   type="number"
                   name="volunteersNeeded"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="No. of volunteers needed 
-"
-                  required=""
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Enter number of volunteers"
+                  required
                 />
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Category
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <MdCategory /> Category
                 </label>
                 <select
                   name="category"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  required
                 >
-                  <option defaultValue={""}>Select category</option>
+                  <option value="">Select category</option>
                   <option value="Healthcare">Healthcare</option>
                   <option value="Education">Education</option>
                   <option value="Service">Social Service</option>
@@ -139,35 +116,38 @@ const AddNeedPost = () => {
                 </select>
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  {" "}
-                  Deadline
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
+                  <FaRegCalendarAlt /> Deadline
                 </label>
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
                 />
               </div>
-              <div class="sm:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <div className="sm:col-span-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-blue-800 mb-1">
                   Description
                 </label>
                 <textarea
                   name="description"
-                  rows="8"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Your description here"
+                  rows="4"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Enter a detailed description"
+                  required
                 ></textarea>
               </div>
             </div>
-            <div className="flex justify-center items-center my-6">
-              <input className="btn btn-wide" type="submit" value="Add Post" />
+            <div className="text-center mt-6">
+              <button
+                type="submit"
+                className="px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-700 transition-all"
+              >
+                Add Post
+              </button>
             </div>
           </form>
         </div>
-
-
-       
       </section>
     </div>
   );
