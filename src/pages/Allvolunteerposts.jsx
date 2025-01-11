@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import PostCard from "../Components/all posts/PostCard";
 import nodata from "../assets/Animation - 1735041941677.json";
@@ -12,6 +12,7 @@ const Allvolunteerposts = () => {
 
   const [foundPosts, setfoundPosts] = useState(posts);
   const [CardLayout, setCardLayout] = useState(true);
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
@@ -21,6 +22,17 @@ const Allvolunteerposts = () => {
     );
     setfoundPosts(foundPosts);
   };
+ 
+  
+  useEffect(() => {
+    const sortedPosts = [...posts].sort((a, b) => {
+      const dateA = new Date(a.deadline);
+      const dateB = new Date(b.deadline);
+      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+    });
+    setfoundPosts(sortedPosts);
+  }, [posts, sortOrder]); 
+
  
 
   return (
@@ -81,7 +93,7 @@ const Allvolunteerposts = () => {
       <div className="p-4 md:flex-row flex-col gap-6 flex items-center justify-between rounded-lg my-6 border">
         <h1 className="font-bold text-blue-500">All posts {CardLayout?'Cards':'Table'}</h1>
         <h1 className="font-bold dark:text-white">Total Post:  {foundPosts.length}</h1>
-        <div className="   ">
+        <div className=" flex gap-2 items-center  ">
           <fieldset className="w-full flex justify-center space-y-1 dark:text-gray-800">
             <label htmlFor="Search" className="hidden">
               Search
@@ -111,6 +123,15 @@ const Allvolunteerposts = () => {
               />
             </div>
           </fieldset>
+
+          <select className="btn " onChange={(e) => setSortOrder(e.target.value)} value={sortOrder}>
+            <option disabled selected value="">Sort By Deadline</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+
+
+
         </div>
         <div>
           <button

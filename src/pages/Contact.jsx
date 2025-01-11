@@ -3,8 +3,29 @@ import React from 'react';
 const Contact = () => {
     return (
         <div>
-             <section className="py-6 dark:bg-gray-800 dark:text-gray-100">
-                <h1 className='font-bold text-4xl text-center mt-6 mb-12'>Volunteer Hub</h1>
+			 <div
+        className="hero  "
+        style={{
+          backgroundImage:
+            "url(https://i.ibb.co.com/ZXBs9z3/environment-volunteer-concept-with-persons-holding-boxes-donations.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center 35%",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">
+             Contact US
+            </h1>
+            <p className="mb-5">
+			We’d love to hear from you. Reach out for any inquiries, feedback, or collaboration opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+             <section className="py-6 mt-8 dark:bg-gray-800 dark:text-gray-100">
+             
 	<div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
 		<div className="py-6 md:py-0 md:px-6">
 			<h1 className="text-4xl font-bold">Get in touch</h1>
