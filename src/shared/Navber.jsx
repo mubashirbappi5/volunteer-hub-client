@@ -53,12 +53,13 @@ const Navber = () => {
           <button className="font-semibold" >Contact</button>
         </li>
       </NavLink>
-      <li>
-      <div className="dropdown dropdown-bottom">
+     <NavLink>
+     <li>
+      <button className="font-semibold"><div className="dropdown dropdown-bottom">
                   <div
                     tabIndex={0}
                     role="button"
-                    className="    dark:text-violet-600 text-orange-400 m-1"
+                    className="    "
                   >
                     My Profile
                   </div>
@@ -73,8 +74,9 @@ const Navber = () => {
                       <Link to={'/mypostmanage'}>Manage My Posts </Link>
                     </li>
                   </ul>
-                </div>
+                </div></button>
       </li>
+     </NavLink>
     </>
   );
   return (

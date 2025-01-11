@@ -15,15 +15,15 @@ const VolunteerNeedNow = () => {
       });
   }, []);
   return (
-    <div className="w-11/12 mx-auto">
-      <div className="my-10">
-        <h1 className=" font-bold text-center text-2xl dark:text-white">
+    <div className="w-11/12 mx-auto ">
+      <div className="my-14">
+        <h1 className="  text-center text-4xl font-bold dark:text-white">
           Volunteer Needs Now{" "}
         </h1>
       </div>
 
       {loading ? (
-        <div className="flex justify-center p-10">
+        <div className="flex justify-center h-40 p-10">
           <span className="loading loading-bars loading-lg mx-auto"></span>
         </div>
       ) : (
@@ -34,13 +34,13 @@ const VolunteerNeedNow = () => {
         </section>
       )}
       <div className="flex justify-center my-6">
-        <Link
-          to={"/needposts"}
-          className="btn btn-outline font-semibold dark:text-white"
-        >
-          See All
-        </Link>
-      </div>
+  <Link
+    to={"/needposts"}
+    className="btn font-semibold px-6 py-3 text-white bg-[#fdbc8f] hover:bg-[#fda97d] hover:scale-105 hover:shadow-lg transition-transform duration-300 ease-in-out rounded-lg"
+  >
+    See All
+  </Link>
+</div>
     </div>
   );
 };

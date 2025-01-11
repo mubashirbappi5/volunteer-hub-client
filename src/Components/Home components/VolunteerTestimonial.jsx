@@ -3,7 +3,7 @@ import React from 'react';
 const VolunteerTestimonial = () => {
     return (
         <div>
-            <section className="my-8">
+            <section className="">
 	<div className="container mx-auto flex flex-col items-center pb-6 mb-4 md:p-10 md:px-12">
 		<h1 className="text-4xl font-semibold leading-none dark:text-gray-200 text-center">What our customers are saying about us</h1>
 	</div>

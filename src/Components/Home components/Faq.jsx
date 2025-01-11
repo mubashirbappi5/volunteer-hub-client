@@ -6,7 +6,7 @@ const Faq = () => {
             <section className=" dark:text-gray-800">
 	<div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
 		<p className="p-2 text-sm font-medium tracking-wider text-center dark:text-gray-300 uppercase">How it works</p>
-		<h2 className="mb-12 text-4xl font-bold leading-none text-center dark:text-white sm:text-5xl">Frequently Asked Questions</h2>
+		<h2 className="mb-12 text-4xl font-bold leading-none text-center dark:text-white ">Frequently Asked Questions</h2>
 		<div className="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300">
 			<details>
 				<summary className="py-2 outline-none cursor-pointer dark:text-white focus:underline">What is this volunteer opportunity about?</summary>

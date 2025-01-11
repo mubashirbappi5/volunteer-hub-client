@@ -4,18 +4,29 @@ import { Authcontext } from "../Context/AuthContext/AuthProvider";
 import VolunteerTestimonial from "../Components/Home components/VolunteerTestimonial";
 import Faq from "../Components/Home components/Faq";
 import VolunteerNeedNow from "../Components/Home components/VolunteerNeedNow";
+import Partners from "../Components/Home components/Partners";
 
 
 const Home = () => {
     const {name} = useContext(Authcontext)
     return (
-        <div>
-           <Banner></Banner>
+        <div className="space-y-10">
+          <div>
+          <Banner></Banner>
+          </div>
+           <div>
            <VolunteerNeedNow/>
-           <VolunteerTestimonial/>
+           </div>
+         <div>
+         <VolunteerTestimonial/>
+         </div>
+           <div>
            <Faq/>
+           </div>
 
-           
+           <div>
+            <Partners/>
+           </div>
             
         </div>
     );
