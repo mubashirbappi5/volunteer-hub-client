@@ -10,6 +10,7 @@ import { FiImage } from "react-icons/fi";
 import img1 from "../assets/image/Volunteering-rafiki.png";
 import useAxios from "../Hooks/UseAxios";
 import "./foraddvolunteer/Demo.css";
+import img9 from '../assets/image/partner/SL-091823-63290-07.jpg'
 
 const AddNeedPost = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -40,7 +41,28 @@ const AddNeedPost = () => {
   };
 
   return (
-    <div className="my-10">
+    <div className="mb-6">
+       <div
+              className="hero border border-orange-300  mb-6"
+              style={{
+                backgroundImage:
+               `url(${img9})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center 35%",
+              }}
+            >
+          
+              <div className="hero-content text-neutral-content text-center">
+                <div className="max-w-md">
+                  <h1 className="mb-5 text-3xl text-black font-bold">
+                  Post Your Volunteer Opportunity
+                  </h1>
+                  <p className="mb-5 text-black">
+                  Share a cause that matters to you and invite others to get involved in making a difference.
+                  </p>
+                </div>
+              </div>
+            </div>
       <section
         className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex justify-center items-center"
         style={{ backgroundImage: `url(${img1})`, backgroundSize: "cover", backgroundBlendMode: "overlay" }}

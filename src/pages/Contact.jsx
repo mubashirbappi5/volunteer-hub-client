@@ -1,24 +1,25 @@
 import React from 'react';
-
+import img1 from '../assets/image/partner/SL-091823-63290-07.jpg'
 const Contact = () => {
+	
     return (
         <div>
 			 <div
-        className="hero  "
+        className="hero border border-orange-300 "
         style={{
           backgroundImage:
-            "url(https://i.ibb.co.com/ZXBs9z3/environment-volunteer-concept-with-persons-holding-boxes-donations.jpg)",
+         `url(${img1})`,
           backgroundSize: "cover",
           backgroundPosition: "center 35%",
         }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
+    
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
+            <h1 className="mb-5 text-5xl text-black font-bold">
              Contact US
             </h1>
-            <p className="mb-5">
+            <p className="mb-5 text-black">
 			We’d love to hear from you. Reach out for any inquiries, feedback, or collaboration opportunities.
             </p>
           </div>
