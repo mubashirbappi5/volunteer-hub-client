@@ -10,7 +10,7 @@ import progoti from '../../assets/image/partner/progti.png'
 const Partners = () => {
     return (
         <div>
-            <h1 className='text-4xl font-bold text-center my-10'>Driving Impact Together</h1>
+            <h1 className='text-4xl font-bold dark:text-white text-center my-10'>Driving Impact Together</h1>
             <div className='my-20'>
             <Marquee>
                 <img className='w-40' src={progoti} alt="" />
