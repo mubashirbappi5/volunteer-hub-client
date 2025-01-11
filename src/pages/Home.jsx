@@ -5,6 +5,7 @@ import VolunteerTestimonial from "../Components/Home components/VolunteerTestimo
 import Faq from "../Components/Home components/Faq";
 import VolunteerNeedNow from "../Components/Home components/VolunteerNeedNow";
 import Partners from "../Components/Home components/Partners";
+import Progress from "../Components/Home components/Progress";
 
 
 const Home = () => {
@@ -13,7 +14,11 @@ const Home = () => {
         <div className="space-y-10">
           <div>
           <Banner></Banner>
+          <div>
+            <Progress/>
           </div>
+          </div>
+         
            <div>
            <VolunteerNeedNow/>
            </div>
