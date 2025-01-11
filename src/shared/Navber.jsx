@@ -34,28 +34,28 @@ const Navber = () => {
     <>
       <NavLink to={"/"}>
         <li className="dark:hover:text-violet-600">
-          <button className="font-semibold">Home</button>
+          <button className="font-semibold focus:bg-violet-400 dark:focus:bg-orange-300">Home</button>
         </li>
       </NavLink>
 
       <NavLink to={"/needposts"}>
         <li className="dark:hover:text-violet-600 ">
-          <button className="font-semibold" >All volunteer Need posts</button>
+          <button className="font-semibold focus:bg-violet-400 dark:focus:bg-orange-300" >All volunteer Need posts</button>
         </li>
       </NavLink>
       <NavLink to={"/about"}>
         <li>
-          <button className="font-semibold" >About</button>
+          <button className="font-semibold focus:bg-violet-400 dark:focus:bg-orange-300" >About</button>
         </li>
       </NavLink>
       <NavLink to={"/contact"}>
         <li>
-          <button className="font-semibold" >Contact</button>
+          <button className="font-semibold focus:bg-violet-400 dark:focus:bg-orange-300" >Contact</button>
         </li>
       </NavLink>
      <NavLink>
      <li>
-      <button className="font-semibold"><div className="dropdown dropdown-bottom">
+      <button className="font-semibold focus:bg-violet-400 dark:focus:bg-orange-300"><div className="dropdown dropdown-bottom">
                   <div
                     tabIndex={0}
                     role="button"
@@ -65,7 +65,7 @@ const Navber = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content menu bg-base-100 rounded-box z-[100] w-52 p-2 shadow"
+                    className="dropdown-content menu bg-base-100 rounded-box z-[100] dark:bg-black w-52 p-2 shadow"
                   >
                     <li>
                       <Link to={'/addpost'} >Add Volunteer need Post</Link>
