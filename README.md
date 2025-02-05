@@ -24,7 +24,8 @@ This application allows users to create, manage, and volunteer for various volun
 
 
 
-***npm Packages Used**
+***Technologies Used**
+
 1.react: For building the user interface.
 
 2.react-router-dom: For routing and navigation.
