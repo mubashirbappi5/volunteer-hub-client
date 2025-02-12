@@ -4,8 +4,9 @@ import Lottie from 'lottie-react';
 const ErrorPage = () => {
     return (
         <div>
+
             <Lottie className='md:w-96 mx-auto' animationData={notfound}></Lottie>
-            
+             <Link to={'/'}>Back to Home</Link>
         </div>
     );
 };
