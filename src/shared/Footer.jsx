@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -23,44 +24,29 @@ const Footer = () => {
 				<h3 className="tracking-wide uppercase dark:text-gray-900">Service</h3>
 				<ul className="space-y-1">
 					<li>
-						<a rel="noopener noreferrer" href="#">Health Care</a>
+						<Link to={'/mypostmanage'}>Mypostmanage</Link>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#">Education</a>
+					<Link to={'/addpost'}>Add Post</Link>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#">Animal Care</a>
+					<Link to={'/needposts'}>All Post</Link>
 					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Social Service</a>
-					</li>
+					
 				</ul>
 			</div>
 			<div className="space-y-3">
 				<h3 className="tracking-wide uppercase dark:text-gray-900">Company</h3>
 				<ul className="space-y-1">
 					<li>
-						<a rel="noopener noreferrer" href="#">Privacy</a>
+					<Link to={'/about'}>About</Link>
 					</li>
 					<li>
-						<a rel="noopener noreferrer" href="#">Terms of Service</a>
+					<Link to={'/contact'}>Contact</Link>
 					</li>
 				</ul>
 			</div>
-			<div className="space-y-3">
-				<h3 className="uppercase dark:text-gray-900">About</h3>
-				<ul className="space-y-1">
-					<li>
-						<a rel="noopener noreferrer" href="#">Faq</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Documentation</a>
-					</li>
-					<li>
-						<a rel="noopener noreferrer" href="#">Guides</a>
-					</li>
-				</ul>
-			</div>
+			
 			<div className="space-y-3">
 				<div className="uppercase dark:text-gray-900">Social media</div>
 				<div className="flex justify-start space-x-3">
