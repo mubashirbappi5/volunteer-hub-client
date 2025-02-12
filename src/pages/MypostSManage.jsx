@@ -8,7 +8,7 @@ import MyvolunteerReqpost from "../Components/VolunteerRequest/MyvolunteerReqpos
 import Swal from "sweetalert2";
 
 import useAxios from "../Hooks/UseAxios";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const MypostSManage = () => {
   const { user, handleModalToggle } = useContext(Authcontext);
@@ -225,7 +225,7 @@ const MypostSManage = () => {
                                 className="btn btn-sm"
                                 onClick={() => handleupdate(mypost._id)}
                               >
-                                Update
+                                <MdEdit />
                               </button>
                             </td>
                             <td className="p-3 ">
